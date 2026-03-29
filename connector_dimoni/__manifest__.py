@@ -1,17 +1,27 @@
 # Copyright 2026 Jesus Ramiro <jesus@bilbonet.net>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
-    "name": "XX",
-    "summary": "YY",
+    "name": "Connector Dimoni",
+    "summary": "Connector framework base for Dimoni product import",
     "version": "18.0.1.0.0",
     "development_status": "Alpha",
-    "category": "--",
-    "website": "https://github.com/Bilbonet/xx-zz",
+    "category": "Connector",
+    "website": "https://github.com/Bilbonet/connector-dimoni",
     "author": "Jesus Ramiro (Bilbonet)",
     "maintainers": ["bilbonet"],
     "license": "AGPL-3",
     "depends": [
-        "yy_zz",
+        "connector",
+        "base_external_dbsource",
+        "base_external_dbsource_mssql",
+        "product",
     ],
-    "data": [],
+    "data": [
+        "security/ir.model.access.csv",
+        "views/dimoni_backend_views.xml",
+        "views/dimoni_product_template_views.xml",
+        "wizard/dimoni_product_import_wizard_views.xml",
+    ],
+    "installable": True,
+    "application": False,
 }

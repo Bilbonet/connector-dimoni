@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dimoni_backend_tree" model="ir.ui.view">
+        <field name="name">dimoni.backend.tree</field>
+        <field name="model">dimoni.backend</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="company_id"/>
+                <field name="dimoni_grp_id"/>
+                <field name="dbsource_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dimoni_backend_form" model="ir.ui.view">
+        <field name="name">dimoni.backend.form</field>
+        <field name="model">dimoni.backend</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_open_product_import_wizard"
+                        string="Import product"
+                        type="object"
+                        class="btn-primary"
+                    />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="company_id"/>
+                        <field name="dimoni_grp_id"/>
+                        <field name="dbsource_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dimoni_backend" model="ir.actions.act_window">
+        <field name="name">Dimoni Backends</field>
+        <field name="res_model">dimoni.backend</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_dimoni_root" name="Dimoni Connector"/>
+    <menuitem
+        id="menu_dimoni_backend"
+        name="Backends"
+        parent="menu_dimoni_root"
+        action="action_dimoni_backend"
+    />
+</odoo>
