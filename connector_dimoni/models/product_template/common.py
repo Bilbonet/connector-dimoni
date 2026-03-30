@@ -1,9 +1,36 @@
+from odoo import fields, models
+
 from odoo.addons.component.core import Component
+
+
+class ProductTemplate(models.Model):
+    _inherit = "product.template"
+
+    dimoni_binding_ids = fields.One2many(
+        comodel_name="dimoni.product.template",
+        inverse_name="odoo_id",
+        string="Dimoni Bindings",
+    )
+
+
+class DimoniProductTemplate(models.Model):
+    _name = "dimoni.product.template"
+    _inherit = "dimoni.binding"
+    _inherits = {"product.template": "odoo_id"}
+    _description = "Dimoni Product Template Binding"
+
+    odoo_id = fields.Many2one(
+        comodel_name="product.template",
+        string="Product Template",
+        required=True,
+        ondelete="cascade",
+    )
+    dimoni_grp_id = fields.Char(string="Dimoni GRP_ID", required=True)
 
 
 class DimoniProductAdapter(Component):
     _name = "dimoni.product.adapter"
-    _inherit = "dimoni.base"
+    _inherit = "base.dimoni.connector"
     _usage = "backend.adapter"
     _apply_on = "dimoni.product.template"
 

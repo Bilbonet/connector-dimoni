@@ -4,6 +4,17 @@ from odoo.exceptions import UserError
 from odoo.addons.component.core import Component
 
 
+class DimoniProductImportMapper(Component):
+    _name = "dimoni.product.import.mapper"
+    _inherit = "dimoni.import.mapper"
+    _apply_on = "dimoni.product.template"
+
+    direct = [
+        ("Codigo", "default_code"),
+        ("Descripc", "name"),
+    ]
+
+
 class DimoniProductRecordImporter(Component):
     _name = "dimoni.product.record.importer"
     _inherit = "base.importer"
@@ -13,7 +24,9 @@ class DimoniProductRecordImporter(Component):
     def run(self, code):
         rows = self.backend_adapter.search_by_code(code)
         if not rows:
-            raise UserError("No product found in Dimoni for the given code and backend.")
+            raise UserError(
+                self.env._("No product found in Dimoni for the given code and backend.")
+            )
         row = rows[0]
         external_id = str(row["ROW_ID"])
 

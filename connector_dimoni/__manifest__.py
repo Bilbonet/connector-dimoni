@@ -6,13 +6,12 @@
     "version": "18.0.1.0.0",
     "development_status": "Alpha",
     "category": "Connector",
-    "website": "https://github.com/Bilbonet/connector-dimoni",
+    "website": "https://github.com/Bilbonet/arrace-custom",
     "author": "Jesus Ramiro (Bilbonet)",
     "maintainers": ["bilbonet"],
     "license": "AGPL-3",
     "depends": [
         "connector",
-        "base_external_dbsource",
         "base_external_dbsource_mssql",
         "product",
     ],
@@ -22,6 +21,4 @@
         "views/dimoni_product_template_views.xml",
         "wizard/dimoni_product_import_wizard_views.xml",
     ],
-    "installable": True,
-    "application": False,
 }

@@ -7,6 +7,7 @@ class DimoniBackend(models.Model):
     _description = "Dimoni Backend"
 
     name = fields.Char(required=True)
+    active = fields.Boolean(default=True)
     dbsource_id = fields.Many2one(
         comodel_name="base.external.dbsource",
         string="External DB Source",
@@ -16,6 +17,7 @@ class DimoniBackend(models.Model):
     )
     company_id = fields.Many2one(
         comodel_name="res.company",
+        string="Company",
         required=True,
         default=lambda self: self.env.company,
     )

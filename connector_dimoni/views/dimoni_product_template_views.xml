@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="view_dimoni_product_template_tree" model="ir.ui.view">
         <field name="name">dimoni.product.template.tree</field>
         <field name="model">dimoni.product.template</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="backend_id"/>
-                <field name="external_id"/>
-                <field name="dimoni_grp_id"/>
-                <field name="odoo_id"/>
-                <field name="sync_date"/>
+                <field name="backend_id" />
+                <field name="external_id" />
+                <field name="dimoni_grp_id" />
+                <field name="odoo_id" />
+                <field name="sync_date" />
             </tree>
         </field>
     </record>

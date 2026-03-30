@@ -1,28 +1,7 @@
-from odoo.addons.component.core import Component
-from odoo.addons.connector.components.binder import Binder
-from odoo.addons.connector.components.mapper import ImportMapper
+from odoo.addons.component.core import AbstractComponent
 
 
-class DimoniBaseConnectorComponent(Component):
-    _name = "dimoni.base"
+class BaseDimoniConnectorComponent(AbstractComponent):
+    _name = "base.dimoni.connector"
     _inherit = "base.connector"
     _collection = "dimoni.backend"
-
-
-class DimoniProductBinder(Binder):
-    _name = "dimoni.product.binder"
-    _inherit = "base.binder"
-    _apply_on = "dimoni.product.template"
-    _collection = "dimoni.backend"
-
-
-class DimoniProductImportMapper(ImportMapper):
-    _name = "dimoni.product.import.mapper"
-    _inherit = "base.import.mapper"
-    _apply_on = "dimoni.product.template"
-    _collection = "dimoni.backend"
-
-    direct = [
-        ("Codigo", "default_code"),
-        ("Descripc", "name"),
-    ]

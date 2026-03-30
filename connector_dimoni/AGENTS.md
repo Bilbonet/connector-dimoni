@@ -1,15 +1,10 @@
 # AGENTS.md
 
-Template context file for an **Odoo 18** module.
+Context file for the `connector_dimoni` Odoo 18 module.
 
-This document is intended to help automated agents and development assistants
-understand **what this module does**, **which dependencies it has**, **which parts are critical**,
-and **which constraints must be respected** when analyzing or modifying it.
-
-General repository-wide technical rules (OCA standards, linting, formatting, workflows,
-pre-commit, development conventions, etc.) are **not duplicated here**.
-Those rules must be obtained from the repository executable configuration
-and/or from the applicable Skills.
+This document contains module-specific functional and architectural context for
+automated agents. General Odoo, OCA, linting, and repository rules must be taken from
+active skills and repository configuration.
 
 ---
 
@@ -17,19 +12,20 @@ and/or from the applicable Skills.
 
 ## Technical Name
 
-`<module_name>`
+`connector_dimoni`
 
 ## Functional Name
 
-`<functional_name>`
+`Dimoni Connector`
 
 ## Status
 
-`<draft / active / maintenance / deprecated>`
+`active - alpha`
 
 ## Target Version
 
 - Odoo: `18.0`
+- Module version: `18.0.1.0.0`
 - Target branch: `18.0`
 
 ---
@@ -38,15 +34,21 @@ and/or from the applicable Skills.
 
 ## Functional Summary
 
-<Explain in 2 to 5 sentences what the module does and which need it solves.>
+This module connects Odoo 18 Community with Exact Dimoni ERP for product import
+operations. It is built on top of the OCA Connector framework and currently implements a
+manual import flow for a single product identified by code.
 
 ## Business Problem Covered
 
-<Describe the actual business problem solved by this module.>
+The module avoids re-entering product master data manually in Odoo when the
+authoritative source already exists in Dimoni. It also preserves traceability between
+the imported Odoo product and the external Dimoni record.
 
 ## Expected Outcome
 
-<Describe the expected functional behavior once the module is installed and configured.>
+Users can configure a Dimoni backend linked to an MSSQL external source and a
+company-specific `GRP_ID`, launch a manual import by product code, and create or update
+an Odoo `product.template` while storing the external binding and last sync timestamp.
 
 ---
 
@@ -54,20 +56,23 @@ and/or from the applicable Skills.
 
 ## Included
 
-- <main_feature_1>
-- <main_feature_2>
-- <main_feature_3>
+- Backend configuration for Dimoni connections.
+- Manual product import from Dimoni by exact product code.
+- Binding storage between `product.template` and Dimoni external identifiers.
+- Update of existing products when a matching binding or product code exists.
 
 ## Not Included
 
-- <out_of_scope_1>
-- <out_of_scope_2>
+- Automatic scheduled synchronization.
+- Export from Odoo to Dimoni.
+- Multi-record batch imports.
+- Sales, stock, accounting, or other business logic replication from Dimoni.
 
 ## Main Use Cases
 
-- <use_case_1>
-- <use_case_2>
-- <use_case_3>
+- Configure one backend per company and Dimoni `GRP_ID`.
+- Import a product from Dimoni into Odoo on demand.
+- Re-import a product to refresh description or code data from Dimoni.
 
 ---
 
@@ -75,79 +80,85 @@ and/or from the applicable Skills.
 
 ## New Models
 
-| Model | Purpose | Comments |
-|--------|---------|----------|
-| `<model.name>` | <what it represents> | <relevant notes> |
-| `<model.name>` | <what it represents> | <relevant notes> |
+| Model                          | Purpose                       | Comments                                                                         |
+| ------------------------------ | ----------------------------- | -------------------------------------------------------------------------------- |
+| `dimoni.backend`               | Connector backend definition  | Inherits `connector.backend`; stores company, dbsource, and Dimoni `GRP_ID`.     |
+| `dimoni.product.template`      | External binding for products | Inherits `external.binding` and delegates to `product.template` via `_inherits`. |
+| `dimoni.product.import.wizard` | Manual import assistant       | Transient model used from backend form.                                          |
 
 ## Extended Models
 
-| Model | What is added or changed | Functional Impact |
-|--------|---------------------------|-------------------|
-| `<existing.model>` | <fields / logic / constraints> | <impact> |
-| `<existing.model>` | <fields / logic / constraints> | <impact> |
+| Model              | What is added or changed      | Functional Impact                                       |
+| ------------------ | ----------------------------- | ------------------------------------------------------- |
+| `product.template` | `dimoni_binding_ids` one2many | Allows navigation from Odoo product to Dimoni bindings. |
 
 ## Object Relationships
 
-<Briefly explain how the main models are related.>
-
-Example:
-
-- `<model.a>` belongs to `<model.b>`
-- `<model.c>` is generated from `<model.a>`
-- `<model.d>` stores synchronization state
+- `dimoni.backend` belongs to one `res.company`.
+- `dimoni.backend` uses one `base.external.dbsource` restricted to MSSQL.
+- `dimoni.product.template` belongs to one `dimoni.backend`.
+- `dimoni.product.template` wraps one `product.template`.
+- The backend `GRP_ID` scopes external queries against Dimoni table `PARTI`.
 
 ---
 
 # 5. Functional Flow
 
-Describe the main functional flow of the module.
-
 ## Main Flow
 
-1. <step_1>
-2. <step_2>
-3. <step_3>
-4. <step_4>
+1. User opens a `dimoni.backend` record.
+2. User launches the `Import product` button.
+3. Wizard collects the target backend and the Dimoni product code.
+4. The importer queries Dimoni table `PARTI` filtered by backend `GRP_ID` and trimmed
+   product code.
+5. Mapper converts Dimoni fields `Codigo` and `Descripc` into Odoo values.
+6. If an existing binding is found for the external `ROW_ID`, the linked product is
+   updated.
+7. Otherwise, the module searches `product.template` by `default_code`, updates it if
+   found, or creates a new one.
+8. The module creates or updates the Dimoni binding and writes `sync_date`.
 
 ## Alternative or Secondary Flows
 
-- <alternative_flow_1>
-- <alternative_flow_2>
+- If no Dimoni row matches the code and backend, the importer raises a `UserError`.
+- If multiple rows are returned, only the first row is processed by the current
+  implementation.
 
 ## Relevant Events
 
-- <event_1>
-- <event_2>
-- <event_3>
+- Manual backend button `action_open_product_import_wizard`.
+- Wizard action `action_import`.
+- OCA Connector component lookup with `usage="record.importer"`.
 
 ---
 
 # 6. External Integrations
 
-Complete this section only if the module integrates with external systems.
-
 ## Integrated Systems
 
-| System | Type | Flow Direction | Purpose |
-|---------|------|----------------|---------|
-| `<system>` | `<API / webhook / SOAP / file / email / other>` | `<Odoo -> external / external -> Odoo / bidirectional>` | <objective> |
+| System                                   | Type                 | Flow Direction                     | Purpose                                          |
+| ---------------------------------------- | -------------------- | ---------------------------------- | ------------------------------------------------ |
+| `Exact Dimoni`                           | `external database`  | `external -> Odoo`                 | Read product master data from Dimoni.            |
+| `MSSQL via base_external_dbsource_mssql` | `database connector` | `Odoo -> external` query execution | Execute SQL queries against the Dimoni database. |
 
 ## Integration Details
 
-### `<system_name>`
+### `Exact Dimoni`
 
-- protocol: `<REST / SOAP / XML-RPC / JSON-RPC / SFTP / SMTP / other>`
-- authentication: `<none / basic / token / oauth / api key / other>`
-- main operation: `<what it does>`
-- frequency: `<real time / on demand / cron / manual>`
-- external identifier used: `<field or rule>`
-- retry tolerance: `<yes/no and how>`
+- protocol: `SQL over MSSQL dbsource`
+- authentication: `managed by base.external.dbsource configuration`
+- main operation: `read product rows from PARTI`
+- frequency: `manual / on demand`
+- external identifier used: `ROW_ID`
+- functional scoping key: `GRP_ID`
+- retry tolerance: `no explicit retry mechanism in current module`
 
 ## Integration Constraints
 
-- <constraint_1>
-- <constraint_2>
+- Do not bypass the configured `base.external.dbsource`.
+- Do not replace the OCA Connector architecture with ad hoc ORM or SQL logic.
+- Preserve `ROW_ID` and backend-scoped bindings as the source of identity.
+- Keep `GRP_ID` filtering in place unless a functional change is explicitly requested.
 
 ---
 
@@ -155,23 +166,21 @@ Complete this section only if the module integrates with external systems.
 
 ## Odoo Dependencies
 
-Actual dependencies must match `__manifest__.py`.
+These must match `__manifest__.py`.
 
-- `<module_dependency_1>`
-- `<module_dependency_2>`
-- `<module_dependency_3>`
+- `connector`
+- `base_external_dbsource_mssql`
+- `product`
 
 ## Python Dependencies
 
-Complete only if applicable.
-
-- `<library_1>`
-- `<library_2>`
+No direct Python library is declared by this module beyond those required by its Odoo
+dependencies.
 
 ## External Functional Dependencies
 
-- <external_service_1>
-- <external_service_2>
+- Access to a Dimoni database exposing table `PARTI`
+- A valid MSSQL dbsource configured in Odoo
 
 ---
 
@@ -179,19 +188,20 @@ Complete only if applicable.
 
 ## Mandatory Configuration
 
-- <configuration_1>
-- <configuration_2>
-- <configuration_3>
+- Create a `dimoni.backend` record.
+- Set `company_id`.
+- Set `dimoni_grp_id` with the company key used in Dimoni `PARTI`.
+- Link `dbsource_id` to an MSSQL `base.external.dbsource`.
 
 ## Optional Configuration
 
-- <optional_configuration_1>
-- <optional_configuration_2>
+- Existing Odoo products with matching `default_code` can be reused instead of creating
+  new products.
 
 ## Relevant Parameters or Master Data
 
-- <parameter_1>
-- <parameter_2>
+- Dimoni table `PARTI`
+- External fields currently consumed: `ROW_ID`, `GRP_ID`, `Codigo`, `Descripc`
 
 ---
 
@@ -199,20 +209,17 @@ Complete only if applicable.
 
 ## Cron Jobs
 
-| Cron | Purpose | Frequency | Risk If It Fails |
-|------|---------|-----------|------------------|
-| `<cron_name>` | <what it does> | <frequency> | <impact> |
-| `<cron_name>` | <what it does> | <frequency> | <impact> |
+No cron jobs are defined in the current module.
 
 ## Manual Processes
 
-- <manual_process_1>
-- <manual_process_2>
+- Create and maintain backend records.
+- Launch manual product imports from the backend form.
+- Re-import individual products when external data must be refreshed.
 
 ## Event-Triggered Processes
 
-- <trigger_1>
-- <trigger_2>
+- None beyond direct user-triggered wizard execution.
 
 ---
 
@@ -220,19 +227,21 @@ Complete only if applicable.
 
 ## Main Views
 
-- <view_1>
-- <view_2>
-- <view_3>
+- `dimoni.backend` tree and form views
+- `dimoni.product.import.wizard` form view
+- `dimoni.product.template` tree view
 
 ## Relevant Actions
 
-- <action_1>
-- <action_2>
+- Backend window action `action_dimoni_backend`
+- Backend form button `action_open_product_import_wizard`
+- Wizard button `action_import`
 
 ## User-Visible Changes
 
-- <visible_change_1>
-- <visible_change_2>
+- New top-level menu `Dimoni Connector`
+- Backend maintenance screen
+- Manual product import popup from backend form
 
 ---
 
@@ -240,20 +249,21 @@ Complete only if applicable.
 
 ## Affected Groups or Roles
 
-| Group | Access | Notes |
-|-------|--------|-------|
-| `<group>` | `<read / write / create / unlink / configure>` | <notes> |
-| `<group>` | `<read / write / create / unlink / configure>` | <notes> |
+| Group             | Access                                                  | Notes                                                 |
+| ----------------- | ------------------------------------------------------- | ----------------------------------------------------- |
+| `base.group_user` | `read/write/create/unlink` on `dimoni.backend`          | Can configure backends in current implementation.     |
+| `base.group_user` | `read/write/create/unlink` on `dimoni.product.template` | Can manage binding records in current implementation. |
 
 ## Important Rules
 
-- <rule_1>
-- <rule_2>
+- Credentials must remain in dbsource configuration, never hardcoded in code.
+- Backend records are company-related, but no extra record rules are defined in this
+  module.
 
 ## Security Risks
 
-- <risk_1>
-- <risk_2>
+- Broad access on backend and binding models may be too permissive for production use.
+- External connection details rely on the security of `base.external.dbsource`.
 
 ---
 
@@ -261,22 +271,18 @@ Complete only if applicable.
 
 ## Sensitive or Critical Data
 
-- <critical_data_1>
-- <critical_data_2>
+- External identity link: `dimoni.product.template.external_id`
+- Backend scoping key: `dimoni_product_template.dimoni_grp_id` and
+  `dimoni.backend.dimoni_grp_id`
+- Last synchronization timestamp: `sync_date`
+- Product master fields updated on import: currently `default_code` and `name`
 
 ## Side Effects When Modifying This Module
 
-- <side_effect_1>
-- <side_effect_2>
-- <side_effect_3>
-
-Typical examples:
-
-- accounting entry changes
-- duplicated synchronizations
-- third-party data resubmission
-- document regeneration
-- automatic state changes
+- Incorrect binding behavior can duplicate products or break traceability.
+- Changes to matching logic can overwrite the wrong `product.template`.
+- Removing `GRP_ID` scoping can import cross-company or cross-tenant data.
+- Changes in mapper/importer logic can alter re-import behavior silently.
 
 ---
 
@@ -284,30 +290,28 @@ Typical examples:
 
 These rules must not be broken without explicit human review.
 
-- <critical_constraint_1>
-- <critical_constraint_2>
-- <critical_constraint_3>
-
-Typical examples:
-
-- do not change external integration contracts
-- do not alter external identifiers already in use
-- do not change accounting logic without functional validation
-- do not modify business states without reviewing downstream impacts
-- do not introduce automations that may duplicate submissions or processes
+- Do not replace the existing backend + binding + component architecture.
+- Do not change the identity contract based on backend + external `ROW_ID`.
+- Do not remove or weaken `GRP_ID` filtering without validating business impact.
+- Do not hardcode external connection parameters or credentials.
+- Do not introduce automatic synchronization without explicit request and impact review.
 
 ---
 
 # 14. Known Limitations
 
-- <limitation_1>
-- <limitation_2>
-- <limitation_3>
+- Only manual single-product import is implemented.
+- Only product code and description are mapped.
+- The importer processes only the first row returned by the external query.
+- No export flow exists from Odoo to Dimoni.
+- No automated tests are present in this module yet.
 
 ## Module Assumptions
 
-- <assumption_1>
-- <assumption_2>
+- `Codigo` identifies the intended product within the backend `GRP_ID` scope.
+- Table `PARTI` and the consumed columns are stable in the external system.
+- Reusing an existing `product.template` by `default_code` is acceptable business
+  behavior.
 
 ---
 
@@ -315,21 +319,19 @@ Typical examples:
 
 ## Agents Must
 
-- understand the functional purpose of the module before changing code
-- keep changes limited to the scope of the requested task
-- respect existing dependencies, contracts, and integrations
-- review the impact on models, security, data, and automations
-- update functional documentation if visible behavior changes
-- rely on the actual repository configuration for technical rules
+- review `__manifest__.py`, models, components, views, and security before editing
+- preserve OCA Connector usage patterns already implemented in this module
+- keep changes minimal and low-risk unless broader refactoring is requested
+- validate impacts on traceability, bindings, and product matching behavior
+- update documentation when visible behavior or configuration changes
 
 ## Agents Must Not
 
-- invent functional behavior not described in the module context
-- introduce changes outside the scope of the module or task
-- break Odoo 18 compatibility
-- alter external integrations without reviewing contracts and effects
-- modify critical logic without making it explicit
-- merge, deploy, or execute destructive actions without human approval
+- invent new business flows not supported by current code or explicit instructions
+- replace connector components with ad hoc SQL or HTTP access
+- alter external identifiers or binding rules without review
+- add dependencies without clear need
+- introduce destructive data migrations without explicit approval
 
 ---
 
@@ -339,47 +341,52 @@ Before making changes, review:
 
 - [ ] `__manifest__.py`
 - [ ] affected models
-- [ ] affected views
+- [ ] affected connector components
+- [ ] affected views and wizard flow
 - [ ] security (`ir.model.access.csv`, rules, groups)
-- [ ] XML data / demo data / configuration
-- [ ] cron jobs and automations
-- [ ] external integrations
-- [ ] side effects
+- [ ] dbsource usage and external query contract
+- [ ] side effects on binding and product deduplication
 - [ ] functional documentation
-- [ ] relevant tests
+- [ ] relevant tests or missing test coverage
 
 ---
 
 # 17. Module-Specific Information to Complete
 
-Fill this section with the actual context of the current module.
-
 ## Executive Summary
 
-<Short and direct summary of the specific module.>
+`connector_dimoni` is an alpha-stage Odoo 18 connector module that imports products
+manually from Exact Dimoni through MSSQL, using the OCA Connector framework and
+persistent binding records for traceability.
 
 ## Change Risk
 
-`<low / medium / high>`
+`medium`
 
 ## Especially Sensitive Areas
 
-- <sensitive_area_1>
-- <sensitive_area_2>
+- `components/product_importer.py`
+- `components/product_adapter.py`
+- binding uniqueness and matching logic
+- backend scoping by company and `GRP_ID`
 
 ## Do Not Modify Unless Explicitly Requested
 
-- <restricted_area_1>
-- <restricted_area_2>
+- connector architecture selection
+- identity contract based on `ROW_ID`
+- search scope on Dimoni `PARTI`
+- product matching fallback by `default_code`
 
 ## Additional Notes
 
-<Free-form notes useful for agents and developers.>
+The repository-level reference AGENTS in the external project states the same core
+constraints: preserve backend/binding/mapper/adapter design, keep synchronization
+traceability intact, and prefer minimal low-risk changes.
 
 ---
 
 # 18. History
 
-| Date | Changes |
-|------|---------|
-| `<yyyy-mm-dd>` | Creation or update of this AGENTS.md |
+| Date         | Changes                                                                                                    |
+| ------------ | ---------------------------------------------------------------------------------------------------------- |
+| `2026-03-30` | Replaced template placeholders with module-specific context extracted from code and repository references. |

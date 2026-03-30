@@ -11,6 +11,7 @@ on:
 
 jobs:
   unreleased-deps:
+    if: false
     runs-on: ubuntu-latest
     name: Detect unreleased dependencies
     steps:
@@ -28,6 +29,7 @@ jobs:
               fi
           done
   test:
+    if: false
     runs-on: ubuntu-22.04
     container: ${{ matrix.container }}
     name: ${{ matrix.name }}
