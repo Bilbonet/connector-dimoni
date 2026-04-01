@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_dimoni_company_list" model="ir.ui.view">
+        <field name="name">dimoni.company.list</field>
+        <field name="model">dimoni.company</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="backend_id" />
+                <field name="code" />
+                <field name="name" />
+                <field name="grp_id" />
+                <field name="row_id" />
+                <field name="sync_date" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_dimoni_company_form" model="ir.ui.view">
+        <field name="name">dimoni.company.form</field>
+        <field name="model">dimoni.company</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="backend_id" />
+                            <field name="code" />
+                            <field name="grp_id" />
+                        </group>
+                        <group>
+                            <field name="name" />
+                            <field name="row_id" />
+                            <field name="sync_date" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dimoni_company" model="ir.actions.act_window">
+        <field name="name">Dimoni Companies</field>
+        <field name="res_model">dimoni.company</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_dimoni_company"
+        name="Companies"
+        parent="menu_dimoni_connector_root"
+        action="action_dimoni_company"
+        sequence="20"
+    />
+</odoo>

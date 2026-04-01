@@ -28,27 +28,10 @@ class DimoniProductTemplate(models.Model):
     dimoni_grp_id = fields.Char(string="Dimoni GRP_ID", required=True)
 
 
-class DimoniProductAdapter(Component):
-    _name = "dimoni.product.adapter"
-    _inherit = "base.dimoni.connector"
-    _usage = "backend.adapter"
+class DimoniProductTemplateAdapter(Component):
+    _name = "dimoni.product.template.adapter"
+    _inherit = "dimoni.backend.adapter"
     _apply_on = "dimoni.product.template"
-
-    def _dbsource(self):
-        return self.backend_record.dbsource_id
-
-    def _row_to_dict(self, row):
-        mapping = getattr(row, "_mapping", None)
-        if mapping:
-            return dict(mapping)
-        if isinstance(row, dict):
-            return row
-        return {
-            "ROW_ID": row[0],
-            "GRP_ID": row[1],
-            "Codigo": row[2],
-            "Descripc": row[3],
-        }
 
     def search_by_code(self, code):
         query = """
@@ -57,11 +40,8 @@ class DimoniProductAdapter(Component):
             WHERE GRP_ID = :grp_id
               AND LTRIM(RTRIM(Codigo)) = :code
         """
-        rows = self._dbsource().execute(
+        return self._execute_dicts(
             query=query,
-            execute_params={
-                "grp_id": self.backend_record.dimoni_grp_id,
-                "code": code.strip(),
-            },
+            params=self._backend_scope_params(code=code.strip()),
+            columns=["ROW_ID", "GRP_ID", "Codigo", "Descripc"],
         )
-        return [self._row_to_dict(row) for row in rows]
