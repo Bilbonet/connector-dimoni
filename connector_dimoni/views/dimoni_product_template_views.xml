@@ -7,7 +7,7 @@
             <list>
                 <field name="backend_id" />
                 <field name="external_id" />
-                <field name="dimoni_grp_id" />
+                <!-- <field name="dimoni_grp_id" /> -->
                 <field name="odoo_id" />
                 <field name="sync_date" />
             </list>

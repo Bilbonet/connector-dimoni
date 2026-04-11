@@ -13,19 +13,12 @@ class DimoniCompany(models.Model):
     _rec_name = "name"
     _order = "code, name"
 
-    row_id = fields.Integer(
-        string="Dimoni ROW_ID",
-        required=True,
-        readonly=True,
-        index=True,
-        help="Primary key of the company in Dimoni.",
-    )
     grp_id = fields.Char(
         string="Dimoni GRP_ID",
         required=True,
         readonly=True,
-        index=True,
-        help="Company key used by Dimoni to scope the rest of the data.",
+        help="Company key in Dimoni used in database to bind "
+             "the records to a specific company",
     )
     code = fields.Char(
         string="Company Code",
@@ -65,7 +58,7 @@ class DimoniCompanyAdapter(Component):
         query = """
             SELECT ROW_ID, GRP_ID, CodEmpre, Nombre
             FROM SEMPE
-            ORDER BY CodEmpre, Nombre
+            ORDER BY ROW_ID
         """
         return self._execute_dicts(
             query=query,

@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 
 
 class DimoniBackend(models.Model):
@@ -19,7 +19,7 @@ class DimoniBackend(models.Model):
         default=lambda self: self.env.company,
         help="Company who uses this Dimoni Backend.",
     )
-    active = fields.Boolean(default=True)
+    active = fields.Boolean(default=False)
     default = fields.Boolean(
         default=False,
         copy=False,
@@ -42,44 +42,34 @@ class DimoniBackend(models.Model):
         ondelete="restrict",
         help="Company imported from Dimoni and used to scope the connector data.",
     )
-    dimoni_grp_id = fields.Char(
+    grp_id = fields.Char(
+        related="dimoni_company_id.grp_id",
         string="Dimoni GRP_ID",
+        store=True,
         copy=False,
         readonly=True,
-        help="Company key in Dimoni used to scope the import.",
+        help="Company key in Dimoni used in database to bind "
+             "the records to a specific company",
     )
 
     _sql_constraints = [
         (
             "dimoni_backend_company_grp_uniq",
-            "unique(company_id, dimoni_grp_id)",
+            "unique(company_id, grp_id)",
             "A backend already exists for this company and GRP_ID.",
         )
     ]
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        vals_list = [self._prepare_company_scope_vals(vals) for vals in vals_list]
-        return super().create(vals_list)
-
-    def write(self, vals):
-        vals = self._prepare_company_scope_vals(vals)
-        return super().write(vals)
-
-    @api.model
-    def _prepare_company_scope_vals(self, vals):
-        vals = dict(vals)
-        if "dimoni_company_id" in vals:
-            grp_id = False
-            if vals["dimoni_company_id"]:
-                company = self.env["dimoni.company"].browse(vals["dimoni_company_id"])
-                grp_id = company.grp_id
-            vals["dimoni_grp_id"] = grp_id
-        return vals
-
-    @api.onchange("dimoni_company_id")
-    def _onchange_dimoni_company_id(self):
-        self.dimoni_grp_id = self.dimoni_company_id.grp_id or False
+    @api.constrains("active", "grp_id")
+    def _check_active_requires_grp_id(self):
+        for record in self:
+            if record.active and not record.grp_id:
+                raise ValidationError(
+                    record.env._(
+                        "A backend must have a Dimoni company "
+                        "before it can be activated."
+                    )
+                )
 
     def action_import_companies(self):
         self.ensure_one()
@@ -88,7 +78,7 @@ class DimoniBackend(models.Model):
                 self.env._("Please select the Dimoni database source first.")
             )
 
-        previous_grp_id = self.dimoni_grp_id
+        previous_grp_id = self.grp_id
         with self.work_on("dimoni.company") as work:
             importer = work.component(usage="record.importer")
             companies = importer.run()
@@ -96,7 +86,8 @@ class DimoniBackend(models.Model):
         if not companies:
             raise UserError(
                 self.env._(
-                    "No companies were found in table SEMPE for the selected database source."
+                    "No companies were found in Dimoni "
+                    "for the selected database source."
                 )
             )
 
@@ -121,10 +112,11 @@ class DimoniBackend(models.Model):
 
     def action_open_product_import_wizard(self):
         self.ensure_one()
-        if not self.dimoni_grp_id:
+        if not self.grp_id:
             raise UserError(
                 self.env._(
-                    "Import the companies from Dimoni and select one on the backend before importing products."
+                    "Import the companies from Dimoni and select one "
+                    "on the backend before importing products."
                 )
             )
         return {

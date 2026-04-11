@@ -4,9 +4,10 @@ from odoo import fields, models
 class DimoniBinding(models.AbstractModel):
     _name = "dimoni.binding"
     _inherit = "external.binding"
-    _description = "Dimoni Binding"
-    _rec_name = "external_id"
+    _description = "Dimoni Binding (abstract)"
+    # _rec_name = "external_id"
 
+    # 'odoo_id': odoo-side id must be declared in concrete model
     backend_id = fields.Many2one(
         comodel_name="dimoni.backend",
         string="Dimoni Backend",

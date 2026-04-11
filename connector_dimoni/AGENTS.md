@@ -49,7 +49,7 @@ Not included by default:
 ## Current Business Rules
 
 - The authoritative external identity is `ROW_ID`.
-- Dimoni searches are always scoped by backend `dimoni_grp_id`.
+- Dimoni searches are always scoped by backend `grp_id`.
 - Manual imports are performed one record at a time by external code.
 - If a binding exists, the linked Odoo record is updated.
 - If no binding exists, the importer may reuse an existing
@@ -84,7 +84,7 @@ external schema first.
 ## Data and Risk Constraints
 
 - Preserve Odoo <-> Dimoni identity traceability through bindings.
-- Preserve backend scoping by `dimoni_grp_id`.
+- Preserve backend scoping by `grp_id`.
 - Keep credentials in `base.external.dbsource`, never in code.
 - Treat fallback matching by `default_code` as a sensitive deduplication rule.
 - Be careful with changes that can duplicate records or bind the wrong Odoo

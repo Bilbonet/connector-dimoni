@@ -4,13 +4,13 @@
         <field name="name">dimoni.company.list</field>
         <field name="model">dimoni.company</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="backend_id" />
+            <list decoration-muted="not active">
                 <field name="code" />
                 <field name="name" />
                 <field name="grp_id" />
-                <field name="row_id" />
-                <field name="sync_date" />
+                <field name="backend_id" optional="hide"/>
+                <field name="external_id" optional="hide"/>
+                <field name="sync_date" optional="hide"/>
             </list>
         </field>
     </record>
@@ -23,13 +23,13 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="backend_id" />
                             <field name="code" />
+                            <field name="name" />
                             <field name="grp_id" />
                         </group>
                         <group>
-                            <field name="name" />
-                            <field name="row_id" />
+                            <field name="backend_id" />
+                            <field name="external_id" />
                             <field name="sync_date" />
                         </group>
                     </group>
@@ -42,6 +42,7 @@
         <field name="name">Dimoni Companies</field>
         <field name="res_model">dimoni.company</field>
         <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
     </record>
 
     <menuitem

@@ -7,6 +7,7 @@ class DimoniProductTemplateImportMapper(Component):
     _apply_on = "dimoni.product.template"
 
     direct = [
+        ("ROW_ID", "external_id"),
         ("Codigo", "default_code"),
         ("Descripc", "name"),
     ]

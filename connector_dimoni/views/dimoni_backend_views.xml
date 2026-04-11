@@ -4,11 +4,11 @@
         <field name="name">dimoni.backend.list</field>
         <field name="model">dimoni.backend</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-muted="not active">
                 <field name="name" />
                 <field name="dbsource_id" />
-                <field name="dimoni_company_id" optional="hide" />
-                <field name="dimoni_grp_id" />
+                <field name="dimoni_company_id" />
+                <field name="grp_id" optional="hide" />
                 <field name="active" widget="boolean_toggle" optional="hide" />
                 <field name="default" widget="boolean_toggle" optional="hide" />
                 <field
@@ -30,31 +30,33 @@
                         string="Import companies"
                         type="object"
                         class="btn-secondary"
-                        invisible="not id or not dbsource_id"
+                        invisible="active or not id or not dbsource_id"
                     />
                     <button
                         name="action_open_product_import_wizard"
                         string="Import product"
                         type="object"
                         class="btn-primary"
-                        invisible="not id or not dimoni_grp_id"
+                        invisible="not id or not grp_id"
                     />
                 </header>
                 <sheet>
                     <group>
                         <group>
                             <field name="name" />
-                            <field name="dbsource_id" />
+                            <field name="dbsource_id" readonly="active" />
                             <field
                                 name="dimoni_company_id"
+                                readonly="active"
                                 domain="[('backend_id', '=', id)]"
                                 options="{'no_create': True}"
                             />
-                            <field name="dimoni_grp_id" readonly="1" />
-                            <field name="default" widget="boolean_toggle" />
+                            <field name="active" widget="boolean_toggle" />
                         </group>
                         <group>
+                            <field name="default" widget="boolean_toggle" />
                             <field name="store_raw_payload" widget="boolean_toggle" />
+                            <field name="grp_id" groups="base.group_no_one" />
                             <field
                                 name="company_id"
                                 groups="base.group_multi_company"
@@ -70,6 +72,7 @@
         <field name="name">Dimoni Backends</field>
         <field name="res_model">dimoni.backend</field>
         <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
     </record>
 
     <menuitem 

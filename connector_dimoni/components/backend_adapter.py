@@ -15,22 +15,20 @@ class DimoniBackendAdapter(AbstractComponent):
     _inherit = ["base.backend.adapter", "base.dimoni.connector"]
     _usage = "backend.adapter"
 
-    def _dbsource(self):
-        return self.backend_record.dbsource_id
-
     def _backend_scope_params(self, **params):
-        if not self.backend_record.dimoni_grp_id:
+        if not self.backend_record.grp_id:
             raise UserError(
                 self.env._(
-                    "Import the companies from Dimoni and select one on the backend before importing scoped records."
+                    "Import the companies from Dimoni and select "
+                    "one on the backend before importing scoped records."
                 )
             )
-        scoped_params = {"grp_id": self.backend_record.dimoni_grp_id}
+        scoped_params = {"grp_id": self.backend_record.grp_id}
         scoped_params.update(params)
         return scoped_params
 
     def _execute(self, query, params=None, metadata=False):
-        dbsource = self._dbsource()
+        dbsource = self.backend_record.dbsource_id
         if dbsource.connector == "mssql":
             statement = text(query) if isinstance(query, str) else query
             rows, cols = dbsource.execute_mssql(statement, params, metadata)

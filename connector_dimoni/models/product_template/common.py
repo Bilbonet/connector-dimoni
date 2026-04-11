@@ -25,7 +25,6 @@ class DimoniProductTemplate(models.Model):
         required=True,
         ondelete="cascade",
     )
-    dimoni_grp_id = fields.Char(string="Dimoni GRP_ID", required=True)
 
 
 class DimoniProductTemplateAdapter(Component):

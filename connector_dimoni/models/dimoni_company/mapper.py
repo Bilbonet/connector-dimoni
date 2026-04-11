@@ -10,7 +10,7 @@ class DimoniCompanyImportMapper(Component):
     _apply_on = "dimoni.company"
 
     direct = [
-        ("ROW_ID", "row_id"),
+        ("ROW_ID", "external_id"),
         ("GRP_ID", "grp_id"),
         ("CodEmpre", "code"),
         ("Nombre", "name"),
