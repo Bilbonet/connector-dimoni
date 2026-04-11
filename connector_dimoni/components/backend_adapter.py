@@ -1,8 +1,6 @@
 # Copyright 2026 Jesus Ramiro <jesus@bilbonet.net>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from sqlalchemy import text
-
 from odoo.exceptions import UserError
 
 from odoo.addons.component.core import AbstractComponent
@@ -28,10 +26,26 @@ class DimoniBackendAdapter(AbstractComponent):
         return scoped_params
 
     def _execute(self, query, params=None, metadata=False):
+        """Execute a query on the datasource configured on the backend.
+
+        query: SQL query to execute.
+        params (dict | list | tuple | None): Optional query parameters.
+        metadata (bool): Whether the datasource should also return column metadata 
+                         together with the fetched rows.
+
+        Local variables:
+            dbsource: Datasource record linked to the current backend.
+
+        Returns:
+            list: Query result rows when ``metadata`` is ``False``.
+            dict: A dictionary with ``cols`` and ``rows`` keys when using the
+                MSSQL connector and ``metadata`` is ``True``.
+            Any: Whatever is returned by ``dbsource.execute(...)`` for
+                non-MSSQL datasources.
+        """
         dbsource = self.backend_record.dbsource_id
         if dbsource.connector == "mssql":
-            statement = text(query) if isinstance(query, str) else query
-            rows, cols = dbsource.execute_mssql(statement, params, metadata)
+            rows, cols = dbsource.execute_mssql(query, params, metadata)
             if metadata:
                 return {"cols": cols, "rows": rows}
             return rows

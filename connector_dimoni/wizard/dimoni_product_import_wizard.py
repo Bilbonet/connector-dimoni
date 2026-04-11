@@ -16,7 +16,12 @@ class DimoniProductImportWizard(models.TransientModel):
         self.ensure_one()
         with self.backend_id.work_on("dimoni.product.template") as work:
             importer = work.component(usage="record.importer")
-            product = importer.run(self.product_code.strip())
+            binding = importer.search_product(search_ref=self.product_code.strip())
+        if not binding:
+            return {"type": "ir.actions.act_window_close"}
+
+        binding = binding[:1]
+        product = binding.odoo_id
 
         return {
             "type": "ir.actions.act_window",

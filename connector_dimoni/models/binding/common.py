@@ -1,3 +1,6 @@
+# Copyright 2026 Jesus Ramiro <jesus@bilbonet.net>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 from odoo import fields, models
 
 
@@ -5,8 +8,9 @@ class DimoniBinding(models.AbstractModel):
     _name = "dimoni.binding"
     _inherit = "external.binding"
     _description = "Dimoni Binding (abstract)"
-    # _rec_name = "external_id"
+    _rec_name = "external_id"
 
+    # Common fields for all Dimoni binding models
     # 'odoo_id': odoo-side id must be declared in concrete model
     backend_id = fields.Many2one(
         comodel_name="dimoni.backend",
@@ -16,15 +20,20 @@ class DimoniBinding(models.AbstractModel):
         ondelete="restrict",
     )
     active = fields.Boolean(default=True, readonly=True)
-    external_id = fields.Char(
+    external_id = fields.Integer(
         string="Dimoni ROW_ID",
         readonly=True,
         required=True,
+        help="Primary key in database Dimoni"
     )
     sync_date = fields.Datetime(
         string="Last Synchronization",
         readonly=True,
         help="Date and time of the last synchronization with Dimoni.",
+    )
+    raw_payload = fields.Text(
+        readonly=True,
+        help="Raw Payload (JSON)",
     )
 
     _sql_constraints = [

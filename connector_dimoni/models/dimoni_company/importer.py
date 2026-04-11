@@ -13,6 +13,11 @@ class DimoniCompanyImporter(Component):
     _usage = "record.importer"
     _apply_on = "dimoni.company"
 
+    def _clean_integer(self, value):
+        if value in (False, None, ""):
+            return 0
+        return int(str(value).strip())
+
     def _get_existing_company(self, external_id, vals):
         dimoni_company_model = self.env["dimoni.company"].with_context(active_test=False)
         return dimoni_company_model.search(
@@ -50,7 +55,7 @@ class DimoniCompanyImporter(Component):
             return dimoni_imported_companies
 
         for row in rows:
-            external_id = row.get("ROW_ID")
+            external_id = self._clean_integer(row.get("ROW_ID"))
 
             # Map the data
             mapper = self.component(usage="import.mapper")
