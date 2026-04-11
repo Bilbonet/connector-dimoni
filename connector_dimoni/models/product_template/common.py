@@ -93,6 +93,32 @@ class DimoniProductTemplate(models.Model):
             importer = work.component(usage="record.importer")
             importer.get_product(row_id=self.external_id, force_update=True)
 
+    def action_open_import_wizard(self):
+        backend = self.backend_id[:1]
+        if len(self.backend_id) > 1 or not backend:
+            backend = self.env["dimoni.backend"].search(
+                [
+                    ("active", "=", True),
+                    ("default", "=", True),
+                    ("grp_id", "!=", False),
+                    ("company_id", "=", self.env.company.id),
+                ],
+                limit=1,
+            )
+        context = dict(self.env.context)
+        if backend:
+            context["default_backend_id"] = backend.id
+        if len(self) == 1 and self.default_code:
+            context["default_product_code"] = self.default_code
+        return {
+            "name": self.env._("Import product from Dimoni"),
+            "type": "ir.actions.act_window",
+            "res_model": "dimoni.product.import.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": context,
+        }
+
 
 class DimoniProductTemplateAdapter(Component):
     _name = "dimoni.product.template.adapter"

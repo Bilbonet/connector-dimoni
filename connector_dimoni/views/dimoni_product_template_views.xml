@@ -30,6 +30,16 @@
         <field name="model">dimoni.product.template</field>
         <field name="arch" type="xml">
             <list>
+                <header>
+                    <button
+                        name="action_open_import_wizard"
+                        string="Import product"
+                        type="object"
+                        class="btn-primary"
+                        groups="connector.group_connector_manager"
+                        display="always"
+                    />
+                </header>
                 <field name="external_id" />
                 <field name="odoo_id" />
                 <field name="sync_date" />
