@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Jesus Ramiro
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
+<odoo>
+    <record id="view_product_template_list_dimoni_connector" model="ir.ui.view">
+        <field name="name">product.template.list.dimoni.connector</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="js_class">dimoni_import_button_list</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_kanban_dimoni_connector" model="ir.ui.view">
+        <field name="name">product.template.kanban.dimoni.connector</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="js_class">dimoni_import_button_kanban</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_product_template_form_dimoni_connector" model="ir.ui.view">
+        <field name="name">product.template.form.dimoni.connector</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <field name="dimoni_binding_ids" invisible="1" />
+                <button
+                    name="action_open_dimoni_products"
+                    class="oe_stat_button"
+                    icon="fa-cube"
+                    type="object"
+                    string="Dimoni"
+                    groups="connector.group_connector_manager"
+                    invisible="not dimoni_binding_ids"
+                />
+            </div>
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_open_dimoni_product_import_wizard"
+                    string="Import from Dimoni"
+                    type="object"
+                    class="btn-primary"
+                    groups="connector.group_connector_manager"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

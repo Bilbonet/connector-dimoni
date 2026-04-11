@@ -14,6 +14,64 @@ class ProductTemplate(models.Model):
         string="Dimoni Bindings",
     )
 
+    def _get_default_dimoni_backend(self):
+        self.ensure_one()
+        company = self.company_id or self.env.company
+        return self.env["dimoni.backend"].search(
+            [
+                ("active", "=", True),
+                ("default", "=", True),
+                ("grp_id", "!=", False),
+                ("company_id", "=", company.id),
+            ],
+            limit=1,
+        )
+
+    def action_open_dimoni_product_import_wizard(self):
+        self.ensure_one()
+        backend = self._get_default_dimoni_backend()
+        context = dict(self.env.context)
+        if backend:
+            context["default_backend_id"] = backend.id
+        if self.default_code:
+            context["default_product_code"] = self.default_code
+        return {
+            "name": self.env._("Import product from Dimoni"),
+            "type": "ir.actions.act_window",
+            "res_model": "dimoni.product.import.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": context,
+        }
+
+    def action_open_dimoni_products(self):
+        self.ensure_one()
+        products = self.dimoni_binding_ids
+        if not products:
+            return {"type": "ir.actions.act_window_close"}
+        action = {
+            "type": "ir.actions.act_window",
+            "name": self.env._("Dimoni Products"),
+            "res_model": "dimoni.product.template",
+            "target": "current",
+        }
+        if len(products) == 1:
+            action.update(
+                {
+                    "view_mode": "form",
+                    "res_id": products.id,
+                }
+            )
+            return action
+        action.update(
+            {
+                "view_mode": "list,form",
+                "domain": [("odoo_id", "=", self.id)],
+                "context": {"default_odoo_id": self.id},
+            }
+        )
+        return action
+
 
 class DimoniProductTemplate(models.Model):
     _name = "dimoni.product.template"

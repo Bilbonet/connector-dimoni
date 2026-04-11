@@ -20,6 +20,13 @@
         "views/dimoni_backend_views.xml",
         "views/dimoni_company_views.xml",
         "views/dimoni_product_template_views.xml",
+        "views/product_template_views.xml",
         "wizard/dimoni_product_import_wizard_views.xml",
     ],
+    "assets": {
+        "web.assets_backend": [
+            "connector_dimoni/static/src/js/*.js",
+            "connector_dimoni/static/src/xml/*.xml",
+        ],
+    },
 }
