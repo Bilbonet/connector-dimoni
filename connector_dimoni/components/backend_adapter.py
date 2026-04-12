@@ -37,7 +37,7 @@ class DimoniBackendAdapter(AbstractComponent):
 
         query: SQL query to execute.
         params (dict | list | tuple | None): Optional query parameters.
-        metadata (bool): Whether the datasource should also return column metadata 
+        metadata (bool): Whether the datasource should also return column metadata
                          together with the fetched rows.
 
         Local variables:
@@ -74,7 +74,7 @@ class DimoniBackendAdapter(AbstractComponent):
                 }
             if isinstance(value, dict):
                 return {key: self._normalize_value(item) for key, item in value.items()}
-            if isinstance(value, (list, tuple)):
+            if isinstance(value, list | tuple):
                 if len(value) == 1:
                     value = value[0]
                     continue
@@ -89,14 +89,17 @@ class DimoniBackendAdapter(AbstractComponent):
             return {key: self._normalize_value(value) for key, value in mapping.items()}
         if isinstance(row, dict):
             return {key: self._normalize_value(value) for key, value in row.items()}
-        if isinstance(row, (list, tuple)) and len(row) == 1:
+        if isinstance(row, list | tuple) and len(row) == 1:
             nested = row[0]
             nested_mapping = getattr(nested, "_mapping", None)
-            if nested_mapping is not None or isinstance(nested, (dict, list, tuple)):
+            if nested_mapping is not None or isinstance(nested, dict | list | tuple):
                 return self._row_to_dict(nested, columns=columns)
         if columns is None:
             raise ValueError("columns are required to normalize sequence rows")
-        return {key: self._normalize_value(value) for key, value in zip(columns, row)}
+        return {
+            key: self._normalize_value(value)
+            for key, value in zip(columns, row, strict=False)
+        }
 
     def _rows_to_dicts(self, rows, columns=None):
         return [self._row_to_dict(row, columns=columns) for row in rows]

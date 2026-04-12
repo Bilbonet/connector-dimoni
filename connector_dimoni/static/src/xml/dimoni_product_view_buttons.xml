@@ -17,10 +17,7 @@
         </xpath>
     </t>
 
-    <t
-        t-name="connector_dimoni.DimoniProductKanban.Buttons"
-        t-inherit="web.KanbanView"
-    >
+    <t t-name="connector_dimoni.DimoniProductKanban.Buttons" t-inherit="web.KanbanView">
         <xpath
             expr="//Layout/t[@t-set-slot='control-panel-create-button']"
             position="inside"

@@ -24,7 +24,7 @@ class DimoniBinding(models.AbstractModel):
         string="Dimoni ROW_ID",
         readonly=True,
         required=True,
-        help="Primary key in database Dimoni"
+        help="Primary key in database Dimoni",
     )
     sync_date = fields.Datetime(
         string="Last Synchronization",

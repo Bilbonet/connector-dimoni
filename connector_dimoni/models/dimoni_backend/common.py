@@ -49,7 +49,7 @@ class DimoniBackend(models.Model):
         copy=False,
         readonly=True,
         help="Company key in Dimoni used in database to bind "
-             "the records to a specific company",
+        "the records to a specific company",
     )
 
     _sql_constraints = [

@@ -6,7 +6,10 @@
         <field name="arch" type="xml">
             <form string="Import product from Dimoni">
                 <group>
-                    <field name="backend_id" groups="connector.group_connector_manager" />
+                    <field
+                        name="backend_id"
+                        groups="connector.group_connector_manager"
+                    />
                     <field name="product_code" />
                 </group>
                 <footer>

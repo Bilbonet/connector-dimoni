@@ -14,7 +14,8 @@
                 <field
                     name="company_id"
                     optional="hide"
-                    groups="base.group_multi_company"/>
+                    groups="base.group_multi_company"
+                />
             </list>
         </field>
     </record>
@@ -60,7 +61,8 @@
                             <field
                                 name="company_id"
                                 groups="base.group_multi_company"
-                                widget="selection"/>
+                                widget="selection"
+                            />
                         </group>
                     </group>
                 </sheet>
@@ -75,8 +77,8 @@
         <field name="context">{'active_test': False}</field>
     </record>
 
-    <menuitem 
-        id="menu_dimoni_connector_root" 
+    <menuitem
+        id="menu_dimoni_connector_root"
         name="Dimoni Connector"
         parent="connector.menu_connector_root"
         sequence="10"

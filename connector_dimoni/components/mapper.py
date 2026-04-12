@@ -39,6 +39,7 @@ class DimoniImportMapper(AbstractComponent):
             "raw_payload": raw_payload,
         }
 
+
 class DimoniExportMapper(AbstractComponent):
     _name = "dimoni.export.mapper"
     _inherit = ["base.dimoni.connector", "base.export.mapper"]

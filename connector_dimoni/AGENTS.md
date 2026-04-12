@@ -2,9 +2,9 @@
 
 Context file for the `connector_dimoni` Odoo 18 module.
 
-General Odoo/OCA rules and detailed OCA Connector architecture guidance come
-from the active skills, especially `odoo-oca-connector`. This file keeps only
-module-specific context that an agent needs before changing code.
+General Odoo/OCA rules and detailed OCA Connector architecture guidance come from the
+active skills, especially `odoo-oca-connector`. This file keeps only module-specific
+context that an agent needs before changing code.
 
 ## Module Identification
 
@@ -17,15 +17,14 @@ module-specific context that an agent needs before changing code.
 
 ## Module Purpose
 
-This module connects Odoo 18 Community with Exact Dimoni through the OCA
-Connector framework.
+This module connects Odoo 18 Community with Exact Dimoni through the OCA Connector
+framework.
 
 Current implemented goal:
 
 - manually import one `product.template` at a time by product code
 - avoid re-entering master data already maintained in Dimoni
-- preserve a persistent Odoo <-> Dimoni identity link through connector
-  bindings
+- preserve a persistent Odoo <-> Dimoni identity link through connector bindings
 
 ## Current Functional Scope
 
@@ -52,8 +51,8 @@ Not included by default:
 - Dimoni searches are always scoped by backend `grp_id`.
 - Manual imports are performed one record at a time by external code.
 - If a binding exists, the linked Odoo record is updated.
-- If no binding exists, the importer may reuse an existing
-  `product.template` by `default_code`.
+- If no binding exists, the importer may reuse an existing `product.template` by
+  `default_code`.
 - If no Odoo match exists, a new `product.template` is created.
 
 ## External Contract
@@ -69,16 +68,15 @@ Not included by default:
   - `Codigo`
   - `Descripc`
 
-Do not assume other Dimoni tables, keys, or semantics without checking the real
-external schema first.
+Do not assume other Dimoni tables, keys, or semantics without checking the real external
+schema first.
 
 ## Important Module Areas
 
 - `components/` contains shared connector abstractions reused by entities.
 - `models/dimoni_backend/` contains backend configuration.
 - `models/binding/` contains the shared binding base.
-- `models/product_template/` contains the current entity-specific product
-  integration.
+- `models/product_template/` contains the current entity-specific product integration.
 - `wizard/` contains the thin manual trigger for product import.
 
 ## Data and Risk Constraints
@@ -87,8 +85,8 @@ external schema first.
 - Preserve backend scoping by `grp_id`.
 - Keep credentials in `base.external.dbsource`, never in code.
 - Treat fallback matching by `default_code` as a sensitive deduplication rule.
-- Be careful with changes that can duplicate records or bind the wrong Odoo
-  record to a Dimoni `ROW_ID`.
+- Be careful with changes that can duplicate records or bind the wrong Odoo record to a
+  Dimoni `ROW_ID`.
 
 ## Change Policy
 

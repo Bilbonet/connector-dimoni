@@ -1,9 +1,9 @@
 /* @odoo-module */
-import {registry} from "@web/core/registry";
 import {KanbanController} from "@web/views/kanban/kanban_controller";
-import {kanbanView} from "@web/views/kanban/kanban_view";
 import {ListController} from "@web/views/list/list_controller";
+import {kanbanView} from "@web/views/kanban/kanban_view";
 import {listView} from "@web/views/list/list_view";
+import {registry} from "@web/core/registry";
 
 class DimoniProductListController extends ListController {
     onImportFromDimoniClick() {
@@ -30,14 +30,11 @@ class DimoniProductKanbanController extends KanbanController {
     }
 }
 
-DimoniProductKanbanController.template =
-    "connector_dimoni.DimoniProductKanban.Buttons";
+DimoniProductKanbanController.template = "connector_dimoni.DimoniProductKanban.Buttons";
 
 const DimoniProductKanbanView = {
     ...kanbanView,
     Controller: DimoniProductKanbanController,
 };
 
-registry
-    .category("views")
-    .add("dimoni_import_button_kanban", DimoniProductKanbanView);
+registry.category("views").add("dimoni_import_button_kanban", DimoniProductKanbanView);

@@ -18,7 +18,7 @@ class DimoniCompany(models.Model):
         required=True,
         readonly=True,
         help="Company key in Dimoni used in database to bind "
-             "the records to a specific company",
+        "the records to a specific company",
     )
     code = fields.Char(
         string="Company Code",

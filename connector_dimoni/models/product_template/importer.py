@@ -1,9 +1,8 @@
 # Copyright 2026 Jesus Ramiro <jesus@bilbonet.net>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo.osv.expression import AND
-
 from odoo import fields
 from odoo.exceptions import UserError
+from odoo.osv.expression import AND
 
 from odoo.addons.component.core import Component
 
@@ -34,9 +33,11 @@ class DimoniProductTemplateImporter(Component):
 
         rows = self.backend_adapter.search_by_code(search_ref)
         if not rows:
-            raise UserError(self.env._(
-                "No product found in Dimoni for the given referenca and backend."
-            ))
+            raise UserError(
+                self.env._(
+                    "No product found in Dimoni for the given referenca and backend."
+                )
+            )
 
         products = self.env["dimoni.product.template"].browse()
         for row in rows:
@@ -149,7 +150,7 @@ class DimoniProductTemplateImporter(Component):
         :param:
         item_data: dict with item data from Dimoni
         product_template: Object product template or none
-        
+
         :return: created Dimoni product record or None
         """
         mapper = self.component(usage="import.mapper")
@@ -173,14 +174,16 @@ class DimoniProductTemplateImporter(Component):
         return None
 
     def _deactivate_missing_binding(self, row_id):
-        binding = self.env["dimoni.product.template"].with_context(
-            active_test=False
-        ).search(
-            [
-                ("backend_id", "=", self.backend_record.id),
-                ("external_id", "=", row_id),
-            ],
-            limit=1,
+        binding = (
+            self.env["dimoni.product.template"]
+            .with_context(active_test=False)
+            .search(
+                [
+                    ("backend_id", "=", self.backend_record.id),
+                    ("external_id", "=", row_id),
+                ],
+                limit=1,
+            )
         )
         if not binding:
             return False

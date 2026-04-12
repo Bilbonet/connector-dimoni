@@ -27,14 +27,14 @@ class ProductTemplate(models.Model):
         }
         if len(products) == 1:
             action.update(
-                {   # type: ignore
+                {  # type: ignore
                     "view_mode": "form",
                     "res_id": products.id,
                 }
             )
             return action
         action.update(
-            {   # type: ignore
+            {  # type: ignore
                 "view_mode": "list,form",
                 "domain": [("odoo_id", "=", self.id)],
                 "context": {"default_odoo_id": self.id},
@@ -49,6 +49,7 @@ class ProductTemplate(models.Model):
             return {"type": "ir.actions.act_window_close"}
         binding.action_refresh()
         return {"type": "ir.actions.client", "tag": "reload"}
+
 
 class DimoniProductTemplate(models.Model):
     _name = "dimoni.product.template"
@@ -115,9 +116,12 @@ class DimoniProductTemplateAdapter(Component):
             query=query,
             params=self._backend_scope_params(row_id=row_id),
             columns=[
-                "ROW_ID", "GRP_ID", "Codigo",
-                "Activo", # 1:Activo / 2:Inactivo
-                "TipoArti", # 1:Producto / 2:Pieza / 3:Componente / 4:Servicio / 5:Envase/Embalaje
+                "ROW_ID",
+                "GRP_ID",
+                "Codigo",
+                "Activo",  # 1:Activo / 2:Inactivo
+                ("TipoArti"),  # 1:Producto / 2:Pieza / 3:Componente / 4:Servicio /
+                # 5:Envase/Embalaje
                 "Descripc",
                 "Pvp_01",
                 "Ampliaci",

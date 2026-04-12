@@ -8,9 +8,9 @@
                 <field name="code" />
                 <field name="name" />
                 <field name="grp_id" />
-                <field name="backend_id" optional="hide"/>
-                <field name="external_id" optional="hide"/>
-                <field name="sync_date" optional="hide"/>
+                <field name="backend_id" optional="hide" />
+                <field name="external_id" optional="hide" />
+                <field name="sync_date" optional="hide" />
             </list>
         </field>
     </record>

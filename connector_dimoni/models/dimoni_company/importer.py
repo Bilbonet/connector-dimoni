@@ -19,7 +19,9 @@ class DimoniCompanyImporter(Component):
         return int(str(value).strip())
 
     def _get_existing_company(self, external_id, vals):
-        dimoni_company_model = self.env["dimoni.company"].with_context(active_test=False)
+        dimoni_company_model = self.env["dimoni.company"].with_context(
+            active_test=False
+        )
         return dimoni_company_model.search(
             [
                 ("backend_id", "=", self.backend_record.id),
@@ -31,7 +33,9 @@ class DimoniCompanyImporter(Component):
         )
 
     def _deactivate_or_delete_missing_companies(self, imported_companies):
-        dimoni_company_model = self.env["dimoni.company"].with_context(active_test=False)
+        dimoni_company_model = self.env["dimoni.company"].with_context(
+            active_test=False
+        )
         missing_companies = dimoni_company_model.search(
             [
                 ("backend_id", "=", self.backend_record.id),
