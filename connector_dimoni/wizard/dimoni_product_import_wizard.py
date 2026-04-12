@@ -5,23 +5,11 @@ class DimoniProductImportWizard(models.TransientModel):
     _name = "dimoni.product.import.wizard"
     _description = "Wizard to import one product from Dimoni"
 
-    def _default_backend_id(self):
-        backend = self.env["dimoni.backend"].search(
-            [
-                ("active", "=", True),
-                ("default", "=", True),
-                ("grp_id", "!=", False),
-                ("company_id", "=", self.env.company.id),
-            ],
-            limit=1,
-        )
-        return backend.id
-
     backend_id = fields.Many2one(
         comodel_name="dimoni.backend",
         required=True,
         string="Backend",
-        default=_default_backend_id,
+        default=lambda self: self.env["dimoni.backend"]._get_default_backend().id,
     )
     product_code = fields.Char(required=True, string="Product code")
 

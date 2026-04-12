@@ -7,13 +7,9 @@ import {listView} from "@web/views/list/list_view";
 
 class DimoniProductListController extends ListController {
     onImportFromDimoniClick() {
-        this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: "dimoni.product.import.wizard",
-            name: "Import product from Dimoni",
-            views: [[false, "form"]],
-            target: "new",
-        });
+        this.actionService.doAction(
+            "connector_dimoni.action_dimoni_product_import_wizard"
+        );
     }
 }
 
@@ -28,13 +24,9 @@ registry.category("views").add("dimoni_import_button_list", DimoniProductListVie
 
 class DimoniProductKanbanController extends KanbanController {
     onImportFromDimoniClick() {
-        this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: "dimoni.product.import.wizard",
-            name: "Import product from Dimoni",
-            views: [[false, "form"]],
-            target: "new",
-        });
+        this.actionService.doAction(
+            "connector_dimoni.action_dimoni_product_import_wizard"
+        );
     }
 }
 

@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Import product from Dimoni">
                 <group>
-                    <field name="backend_id" />
+                    <field name="backend_id" groups="connector.group_connector_manager" />
                     <field name="product_code" />
                 </group>
                 <footer>
@@ -20,5 +20,13 @@
                 </footer>
             </form>
         </field>
+    </record>
+
+    <record id="action_dimoni_product_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import product from Dimoni</field>
+        <field name="res_model">dimoni.product.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_dimoni_product_import_wizard_form" />
+        <field name="target">new</field>
     </record>
 </odoo>

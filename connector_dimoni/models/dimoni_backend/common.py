@@ -71,6 +71,19 @@ class DimoniBackend(models.Model):
                     )
                 )
 
+    @api.model
+    def _get_default_backend(self, company=None):
+        company = company or self.env.company
+        return self.search(
+            [
+                ("active", "=", True),
+                ("default", "=", True),
+                ("grp_id", "!=", False),
+                ("company_id", "=", company.id),
+            ],
+            limit=1,
+        )
+
     def action_import_companies(self):
         self.ensure_one()
         if not self.dbsource_id:

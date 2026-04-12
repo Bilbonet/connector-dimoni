@@ -14,11 +14,18 @@ class DimoniBackendAdapter(AbstractComponent):
     _usage = "backend.adapter"
 
     def _backend_scope_params(self, **params):
+        """Return query parameters scoped to the selected Dimoni company.
+
+        Dimoni stores data for multiple companies in the same database, so
+        every query must include the ``GRP_ID`` filter. This helper ensures the
+        backend has a selected company and injects its identifier as
+        ``GRP_ID`` before merging any extra parameters.
+        """
         if not self.backend_record.grp_id:
             raise UserError(
                 self.env._(
                     "Import the companies from Dimoni and select "
-                    "one on the backend before importing scoped records."
+                    "one on the backend before importing records."
                 )
             )
         scoped_params = {"grp_id": self.backend_record.grp_id}

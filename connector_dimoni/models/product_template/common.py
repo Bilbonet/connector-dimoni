@@ -14,36 +14,6 @@ class ProductTemplate(models.Model):
         string="Dimoni Bindings",
     )
 
-    def _get_default_dimoni_backend(self):
-        self.ensure_one()
-        company = self.company_id or self.env.company
-        return self.env["dimoni.backend"].search(
-            [
-                ("active", "=", True),
-                ("default", "=", True),
-                ("grp_id", "!=", False),
-                ("company_id", "=", company.id),
-            ],
-            limit=1,
-        )
-
-    def action_open_dimoni_product_import_wizard(self):
-        self.ensure_one()
-        backend = self._get_default_dimoni_backend()
-        context = dict(self.env.context)
-        if backend:
-            context["default_backend_id"] = backend.id
-        if self.default_code:
-            context["default_product_code"] = self.default_code
-        return {
-            "name": self.env._("Import product from Dimoni"),
-            "type": "ir.actions.act_window",
-            "res_model": "dimoni.product.import.wizard",
-            "view_mode": "form",
-            "target": "new",
-            "context": context,
-        }
-
     def action_open_dimoni_products(self):
         self.ensure_one()
         products = self.dimoni_binding_ids
@@ -57,14 +27,14 @@ class ProductTemplate(models.Model):
         }
         if len(products) == 1:
             action.update(
-                {
+                {   # type: ignore
                     "view_mode": "form",
                     "res_id": products.id,
                 }
             )
             return action
         action.update(
-            {
+            {   # type: ignore
                 "view_mode": "list,form",
                 "domain": [("odoo_id", "=", self.id)],
                 "context": {"default_odoo_id": self.id},
@@ -72,6 +42,13 @@ class ProductTemplate(models.Model):
         )
         return action
 
+    def action_refresh(self):
+        self.ensure_one()
+        binding = self.dimoni_binding_ids[:1]
+        if not binding:
+            return {"type": "ir.actions.act_window_close"}
+        binding.action_refresh()
+        return {"type": "ir.actions.client", "tag": "reload"}
 
 class DimoniProductTemplate(models.Model):
     _name = "dimoni.product.template"
@@ -93,32 +70,6 @@ class DimoniProductTemplate(models.Model):
             importer = work.component(usage="record.importer")
             importer.get_product(row_id=self.external_id, force_update=True)
 
-    def action_open_import_wizard(self):
-        backend = self.backend_id[:1]
-        if len(self.backend_id) > 1 or not backend:
-            backend = self.env["dimoni.backend"].search(
-                [
-                    ("active", "=", True),
-                    ("default", "=", True),
-                    ("grp_id", "!=", False),
-                    ("company_id", "=", self.env.company.id),
-                ],
-                limit=1,
-            )
-        context = dict(self.env.context)
-        if backend:
-            context["default_backend_id"] = backend.id
-        if len(self) == 1 and self.default_code:
-            context["default_product_code"] = self.default_code
-        return {
-            "name": self.env._("Import product from Dimoni"),
-            "type": "ir.actions.act_window",
-            "res_model": "dimoni.product.import.wizard",
-            "view_mode": "form",
-            "target": "new",
-            "context": context,
-        }
-
 
 class DimoniProductTemplateAdapter(Component):
     _name = "dimoni.product.template.adapter"
@@ -127,6 +78,9 @@ class DimoniProductTemplateAdapter(Component):
     _dimoni_src = "PARTI"
 
     def search_by_code(self, code):
+        """
+        Search Dimoni products by code and return the minimum identifier data.
+        """
         query = f"""
             SELECT ROW_ID, GRP_ID, Codigo
             FROM {self._dimoni_src}
@@ -141,13 +95,31 @@ class DimoniProductTemplateAdapter(Component):
 
     def get_by_row_id(self, row_id):
         query = f"""
-            SELECT ROW_ID, GRP_ID, Codigo, Descripc
-            FROM {self._dimoni_src}
-            WHERE GRP_ID = :grp_id
-              AND ROW_ID = :row_id
+            SELECT
+                p.ROW_ID,
+                p.GRP_ID,
+                p.Codigo,
+                p.Activo,
+                p.TipoArti,
+                p.Descripc,
+                p.Pvp_01,
+                t.Ampliaci
+            FROM {self._dimoni_src} p
+            INNER JOIN PARTT t
+                ON p.GRP_ID = t.GRP_ID
+               AND p.Codigo = t.Codigo
+            WHERE p.GRP_ID = :grp_id
+              AND p.ROW_ID = :row_id
         """
         return self._execute_dicts(
             query=query,
             params=self._backend_scope_params(row_id=row_id),
-            columns=["ROW_ID", "GRP_ID", "Codigo", "Descripc"],
+            columns=[
+                "ROW_ID", "GRP_ID", "Codigo",
+                "Activo", # 1:Activo / 2:Inactivo
+                "TipoArti", # 1:Producto / 2:Pieza / 3:Componente / 4:Servicio / 5:Envase/Embalaje
+                "Descripc",
+                "Pvp_01",
+                "Ampliaci",
+            ],
         )

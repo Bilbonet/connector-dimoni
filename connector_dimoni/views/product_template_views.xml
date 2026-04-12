@@ -34,7 +34,7 @@
                 <button
                     name="action_open_dimoni_products"
                     class="oe_stat_button"
-                    icon="fa-cube"
+                    icon="fa-chain"
                     type="object"
                     string="Dimoni"
                     groups="connector.group_connector_manager"
@@ -43,11 +43,13 @@
             </div>
             <xpath expr="//header" position="inside">
                 <button
-                    name="action_open_dimoni_product_import_wizard"
-                    string="Import from Dimoni"
+                    name="action_refresh"
+                    string=" Dimoni"
                     type="object"
                     class="btn-primary"
-                    groups="connector.group_connector_manager"
+                    icon="fa-refresh"
+                    groups="product.group_product_manager"
+                    invisible="not dimoni_binding_ids"
                 />
             </xpath>
         </field>

@@ -32,9 +32,9 @@
             <list>
                 <header>
                     <button
-                        name="action_open_import_wizard"
+                        name="%(connector_dimoni.action_dimoni_product_import_wizard)d"
                         string="Import product"
-                        type="object"
+                        type="action"
                         class="btn-primary"
                         groups="connector.group_connector_manager"
                         display="always"
