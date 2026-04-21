@@ -106,7 +106,7 @@ class DimoniProductTemplateAdapter(Component):
                 p.Pvp_01,
                 t.Ampliaci
             FROM {self._dimoni_src} p
-            INNER JOIN PARTT t
+            LEFT OUTER JOIN PARTT t
                 ON p.GRP_ID = t.GRP_ID
                AND p.Codigo = t.Codigo
             WHERE p.GRP_ID = :grp_id
