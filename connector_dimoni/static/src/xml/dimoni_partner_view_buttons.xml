@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Jesus Ramiro
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
+<templates xml:space="preserve">
+    <t t-name="connector_dimoni.DimoniPartnerList.Buttons" t-inherit="web.ListView">
+        <xpath
+            expr="//Layout/t[@t-set-slot='control-panel-create-button']"
+            position="inside"
+        >
+            <button
+                type="button"
+                class="btn btn-primary"
+                t-on-click="onImportFromDimoniClick"
+            >
+                Dimoni Import
+            </button>
+        </xpath>
+    </t>
+
+    <t t-name="connector_dimoni.DimoniPartnerKanban.Buttons" t-inherit="web.KanbanView">
+        <xpath
+            expr="//Layout/t[@t-set-slot='control-panel-create-button']"
+            position="inside"
+        >
+            <button
+                type="button"
+                class="btn btn-primary"
+                t-on-click="onImportFromDimoniClick"
+            >
+                Dimoni Import
+            </button>
+        </xpath>
+    </t>
+</templates>
