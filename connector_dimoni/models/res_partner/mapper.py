@@ -46,3 +46,31 @@ class DimoniResPartnerImportMapper(Component):
             return False
         vat = str(vat).strip()
         return {"vat": vat}
+
+    @mapping
+    def phone(self, record):
+        phone = (record.get("Tlfno_1") or "").strip()
+        if not phone:
+            return {}
+        return {"phone": phone}
+
+    @mapping
+    def mobile(self, record):
+        mobile = (record.get("Tlfno_2") or "").strip()
+        if not mobile:
+            return {}
+        return {"mobile": mobile}
+
+    @mapping
+    def email(self, record):
+        email = (record.get("DirEmail") or "").strip()
+        if not email:
+            return {}
+        return {"email": email}
+
+    @mapping
+    def website(self, record):
+        website = (record.get("DirWeb") or "").strip()
+        if not website:
+            return {}
+        return {"website": website}

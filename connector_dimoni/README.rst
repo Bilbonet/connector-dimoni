@@ -22,15 +22,17 @@ Connector Dimoni
 
 |badge1| |badge2| |badge3|
 
-[ This file must be max 2-3 paragraphs, and is required.
+This module adds an OCA Connector backend for importing selected master
+data from Dimoni through an MSSQL ``base.external.dbsource`` connection.
+The backend stores the Dimoni company scope (``GRP_ID``) and uses
+connector bindings to keep the link between Dimoni ``ROW_ID`` values and
+Odoo records.
 
-The goal of this document is to explain quickly the features of this
-module: “what” this module does and “what” it is for. ]
-
-Example:
-
-This module extends the functionality of ... to support ... and to allow
-users to ...
+The implemented imports cover Dimoni companies, product templates and
+partners. Products can be imported by Dimoni product code into
+``product.template``, while partners can be imported by Dimoni partner
+code into ``res.partner``. Imported records can be refreshed from their
+Dimoni binding.
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -45,7 +47,11 @@ users to ...
 Use Cases / Context
 ===================
 
-It should explain the “why” of the module.
+Dimoni stores data for multiple companies in the same database. This
+connector keeps each Odoo backend scoped to one imported Dimoni company
+through ``GRP_ID`` and preserves the Dimoni ``ROW_ID`` on binding
+records so imports can be rerun without creating duplicate Odoo products
+or partners.
 
 Installation
 ============
@@ -55,45 +61,79 @@ No additional installation steps are required.
 Configuration
 =============
 
-No extra configuration is needed for standard usage.
+Configure an external database source using the MSSQL connector provided
+by ``base_external_dbsource_mssql``.
+
+Create a Dimoni backend from *Connector > Dimoni Connector > Backends*
+and set:
+
+- the Odoo company using the backend;
+- the MSSQL external database source;
+- whether raw Dimoni payloads should be stored on binding records.
+
+Before activating a backend, import the Dimoni companies from the
+backend form and select one of them. Active backends require a selected
+Dimoni company because all product and partner queries are scoped by its
+``GRP_ID``.
+
+Enable *Default* on the active backend that should be preselected by the
+product and partner import wizards for the current Odoo company.
 
 Usage
 =====
 
-[ This file is required and contains the instructions on **“how”** to
-use the module for end-users.
+To import Dimoni records:
 
-If the module does not have a visible impact on the user interface, just
-add the following sentence:
+- Go to *Connector > Dimoni Connector > Backends* and open a backend.
+- Click *Import companies* to import the Dimoni companies available in
+  the configured database source.
+- Select the imported Dimoni company on the backend. This sets the
+  backend ``GRP_ID``, which is required before importing products or
+  partners.
+- Activate the backend. Optionally enable *Default* so the import
+  wizards use it by default for the current Odoo company.
+- Click *Import product* and enter a Dimoni product code, or click
+  *Import partner* and enter a Dimoni partner code.
 
-   This module does not impact the user interface.
+Product imports create a ``dimoni.product.template`` binding when the
+Dimoni ``ROW_ID`` is not linked yet and then open the linked
+``product.template``. If no binding exists yet, the importer first
+searches for an existing product template with the same ``default_code``
+in the backend company scope before creating a new product template.
 
-If that’s not the case, please make sure that every usage step is
-covered and remember that images speak more than words!]
+Partner imports create a ``dimoni.res.partner`` binding when the Dimoni
+``ROW_ID`` is not linked yet and then open the linked ``res.partner``.
+If no binding exists yet, the importer first searches for an existing
+partner with the same ``ref`` in the backend company scope before
+creating a new partner.
 
-To use this module, you need to:
-
-- Go to *App* > Menu > Menu item
-
-  *insert screenshot!*
-
-- In “Contact” form, add a value to field *xyz* > save
-
-  *insert screenshot!*
-
-- The value of *xyz* is now displayed in the list view.
-
-  *insert screenshot!*
+The product and partner list and kanban views also expose a *Dimoni
+Import* button that opens the corresponding import wizard. Imported
+product and partner forms include a Dimoni smart button to open their
+bindings and a refresh action to fetch the latest data from Dimoni.
 
 Known issues / Roadmap
 ======================
 
-There are no future improvments in sight.
+- Add scheduled or batch synchronization if imports need to run for more
+  than one product or partner code at a time.
+- Add concrete export flows if data must be sent from Odoo back to
+  Dimoni. The module currently only provides generic exporter
+  scaffolding.
+- Extend the mapped fields when more Dimoni columns are required. The
+  current mappings cover the fields used by the product, partner and
+  company importers.
+- Add automated tests for backend scoping, binding reuse, field mapping
+  and refresh behavior.
 
 Changelog
 =========
 
-What's your history.
+18.0.1.0.1
+
+- Renamed the binding state column from ``active`` to ``binding_active``
+  on Dimoni company, product and partner bindings to avoid shadowing the
+  delegated Odoo record ``active`` field.
 
 Bug Tracker
 ===========

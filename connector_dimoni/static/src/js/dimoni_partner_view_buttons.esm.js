@@ -32,8 +32,7 @@ class DimoniPartnerKanbanController extends KanbanController {
     }
 }
 
-DimoniPartnerKanbanController.template =
-    "connector_dimoni.DimoniPartnerKanban.Buttons";
+DimoniPartnerKanbanController.template = "connector_dimoni.DimoniPartnerKanban.Buttons";
 
 const DimoniPartnerKanbanView = {
     ...kanbanView,

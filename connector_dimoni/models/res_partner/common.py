@@ -105,7 +105,11 @@ class DimoniResPartnerAdapter(Component):
                 p.direccio,
                 p.CPostal,
                 p.Localida,
-                p.Nif
+                p.Nif,
+                p.Tlfno_1,
+                p.Tlfno_2,
+                p.DirEmail,
+                p.DirWeb
             FROM {self._dimoni_src} p
             WHERE p.GRP_ID = :grp_id
               AND p.ROW_ID = :row_id
@@ -124,5 +128,9 @@ class DimoniResPartnerAdapter(Component):
                 "CPostal",
                 "Localida",
                 "Nif",
+                "Tlfno_1",
+                "Tlfno_2",
+                "DirEmail",
+                "DirWeb",
             ],
         )

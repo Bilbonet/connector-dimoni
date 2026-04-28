@@ -19,7 +19,9 @@
         <field name="inherit_id" ref="base.res_partner_kanban_view" />
         <field name="arch" type="xml">
             <xpath expr="//kanban" position="attributes">
-                <attribute name="js_class">dimoni_partner_import_button_kanban</attribute>
+                <attribute
+                    name="js_class"
+                >dimoni_partner_import_button_kanban</attribute>
             </xpath>
         </field>
     </record>
