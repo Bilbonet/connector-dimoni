@@ -140,3 +140,21 @@ class DimoniBackend(models.Model):
             "target": "new",
             "context": {"default_backend_id": self.id},
         }
+
+    def action_open_partner_import_wizard(self):
+        self.ensure_one()
+        if not self.grp_id:
+            raise UserError(
+                self.env._(
+                    "Import the companies from Dimoni and select one "
+                    "on the backend before importing partners."
+                )
+            )
+        return {
+            "name": "Import partner from Dimoni",
+            "type": "ir.actions.act_window",
+            "res_model": "dimoni.partner.import.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": {"default_backend_id": self.id},
+        }

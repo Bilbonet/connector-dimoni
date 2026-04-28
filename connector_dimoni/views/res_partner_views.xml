@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Jesus Ramiro
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
+<odoo>
+    <record id="view_res_partner_list_dimoni_connector" model="ir.ui.view">
+        <field name="name">res.partner.list.dimoni.connector</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="js_class">dimoni_partner_import_button_list</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_kanban_dimoni_connector" model="ir.ui.view">
+        <field name="name">res.partner.kanban.dimoni.connector</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban" position="attributes">
+                <attribute name="js_class">dimoni_partner_import_button_kanban</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_res_partner_form_dimoni_connector" model="ir.ui.view">
+        <field name="name">res.partner.form.dimoni.connector</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <field name="dimoni_binding_ids" invisible="1" />
+                <button
+                    name="action_open_dimoni_partners"
+                    class="oe_stat_button"
+                    icon="fa-chain"
+                    type="object"
+                    string="Dimoni"
+                    groups="connector.group_connector_manager"
+                    invisible="not dimoni_binding_ids"
+                />
+            </div>
+            <xpath expr="/form/sheet" position="before">
+                <header>
+                    <button
+                        name="action_refresh_dimoni_partner"
+                        string=" Dimoni"
+                        type="object"
+                        class="btn-primary"
+                        icon="fa-refresh"
+                        groups="connector.group_connector_manager"
+                        invisible="not dimoni_binding_ids"
+                    />
+                </header>
+            </xpath>
+        </field>
+    </record>
+</odoo>
