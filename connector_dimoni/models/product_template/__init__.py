@@ -1,3 +1,3 @@
 from . import common
-from . import mapper
 from . import importer
+from . import mapper
