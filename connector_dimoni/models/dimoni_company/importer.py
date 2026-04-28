@@ -19,9 +19,7 @@ class DimoniCompanyImporter(Component):
         return int(str(value).strip())
 
     def _get_existing_company(self, external_id, vals):
-        dimoni_company_model = self.env["dimoni.company"].with_context(
-            active_test=False
-        )
+        dimoni_company_model = self.env["dimoni.company"]
         return dimoni_company_model.search(
             [
                 ("backend_id", "=", self.backend_record.id),
@@ -33,9 +31,7 @@ class DimoniCompanyImporter(Component):
         )
 
     def _deactivate_or_delete_missing_companies(self, imported_companies):
-        dimoni_company_model = self.env["dimoni.company"].with_context(
-            active_test=False
-        )
+        dimoni_company_model = self.env["dimoni.company"]
         missing_companies = dimoni_company_model.search(
             [
                 ("backend_id", "=", self.backend_record.id),
@@ -47,7 +43,7 @@ class DimoniCompanyImporter(Component):
                 with self.env.cr.savepoint(), mute_logger("odoo.sql_db"):
                     company.unlink()
             except Exception:
-                company.write({"active": False})
+                company.write({"binding_active": False})
 
     def run(self):
         dimoni_company_model = self.env["dimoni.company"]
@@ -64,7 +60,7 @@ class DimoniCompanyImporter(Component):
             # Map the data
             mapper = self.component(usage="import.mapper")
             map_record = mapper.map_record(row)
-            vals = dict(map_record.values(), sync_date=sync_date, active=True)
+            vals = dict(map_record.values(), sync_date=sync_date, binding_active=True)
 
             dimoni_company = self._get_existing_company(external_id, vals)
             if dimoni_company:

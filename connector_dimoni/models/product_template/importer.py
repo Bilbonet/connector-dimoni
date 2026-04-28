@@ -188,7 +188,7 @@ class DimoniProductTemplateImporter(Component):
         if not binding:
             return False
 
-        vals = {"active": False, "sync_date": fields.Datetime.now()}
+        vals = {"binding_active": False, "sync_date": fields.Datetime.now()}
         message = (
             "Product no longer exists in Dimoni for the current backend "
             f"(ROW_ID: {row_id})."

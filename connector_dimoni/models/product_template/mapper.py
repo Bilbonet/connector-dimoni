@@ -16,12 +16,7 @@ class DimoniProductTemplateImportMapper(Component):
 
     @mapping
     def active(self, record):
-        active = record.get("Activo")
-        if active in (1, "1", True):
-            return {"active": True}
-        if active in (2, "2", False):
-            return {"active": False}
-        return {}
+        return {"active": record.get("Activo") == 1}
 
     @mapping
     def list_price(self, record):

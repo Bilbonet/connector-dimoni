@@ -2,14 +2,15 @@
 <!-- Copyright 2026 Jesus Ramiro
      License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
 <odoo>
-    <record id="view_dimoni_product_template_search" model="ir.ui.view">
-        <field name="name">dimoni.product.template.search</field>
-        <field name="model">dimoni.product.template</field>
+    <record id="view_dimoni_res_partner_search" model="ir.ui.view">
+        <field name="name">dimoni.res.partner.search</field>
+        <field name="model">dimoni.res.partner</field>
         <field name="arch" type="xml">
-            <search string="Search Dimoni Products">
+            <search string="Search Dimoni Partners">
                 <field name="external_id" />
-                <field name="default_code" />
+                <field name="ref" />
                 <field name="name" />
+                <field name="vat" />
                 <field name="odoo_id" />
                 <filter
                     name="company"
@@ -25,22 +26,22 @@
         </field>
     </record>
 
-    <record id="view_dimoni_product_template_list" model="ir.ui.view">
-        <field name="name">dimoni.product.template.list</field>
-        <field name="model">dimoni.product.template</field>
+    <record id="view_dimoni_res_partner_list" model="ir.ui.view">
+        <field name="name">dimoni.res.partner.list</field>
+        <field name="model">dimoni.res.partner</field>
         <field name="arch" type="xml">
             <list decoration-muted="not binding_active">
                 <header>
                     <button
-                        name="%(connector_dimoni.action_dimoni_product_import_wizard)d"
-                        string="Import product"
+                        name="%(connector_dimoni.action_dimoni_partner_import_wizard)d"
+                        string="Import partner"
                         type="action"
                         class="btn-primary"
                         groups="connector.group_connector_manager"
                         display="always"
                     />
                 </header>
-                <field name="external_id" />
+                <field name="ref" />
                 <field name="odoo_id" />
                 <field name="sync_date" />
                 <field name="backend_id" optional="hide" />
@@ -59,9 +60,9 @@
         </field>
     </record>
 
-    <record id="view_dimoni_product_template_form" model="ir.ui.view">
-        <field name="name">dimoni.product.template.form</field>
-        <field name="model">dimoni.product.template</field>
+    <record id="view_dimoni_res_partner_form" model="ir.ui.view">
+        <field name="name">dimoni.res.partner.form</field>
+        <field name="model">dimoni.res.partner</field>
         <field name="arch" type="xml">
             <form>
                 <header>
@@ -71,7 +72,7 @@
                         string="Refresh"
                         class="oe_highlight"
                         icon="fa-refresh"
-                        help="Fetch the latest product data from Dimoni."
+                        help="Fetch the latest partner data from Dimoni."
                     />
                 </header>
                 <sheet>
@@ -104,26 +105,26 @@
         </field>
     </record>
 
-    <record id="action_dimoni_product_template" model="ir.actions.act_window">
-        <field name="name">Dimoni Products</field>
-        <field name="res_model">dimoni.product.template</field>
+    <record id="action_dimoni_res_partner" model="ir.actions.act_window">
+        <field name="name">Dimoni Partners</field>
+        <field name="res_model">dimoni.res.partner</field>
         <field name="view_mode">list,form</field>
         <field name="context">{'active_test': False}</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
-                No Dimoni products found
+                No Dimoni partners found
             </p>
             <p>
-                Import a product from a backend to create the first binding.
+                Import a partner from a backend to create the first binding.
             </p>
         </field>
     </record>
 
     <menuitem
-        id="menu_dimoni_product_template"
-        name="Products"
+        id="menu_dimoni_res_partner"
+        name="Partners"
         parent="menu_dimoni_connector_root"
-        action="action_dimoni_product_template"
-        sequence="30"
+        action="action_dimoni_res_partner"
+        sequence="40"
     />
 </odoo>

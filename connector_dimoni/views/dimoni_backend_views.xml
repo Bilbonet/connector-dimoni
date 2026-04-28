@@ -40,6 +40,13 @@
                         class="btn-primary"
                         invisible="not id or not grp_id"
                     />
+                    <button
+                        name="action_open_partner_import_wizard"
+                        string="Import partner"
+                        type="object"
+                        class="btn-secondary"
+                        invisible="not id or not grp_id"
+                    />
                 </header>
                 <sheet>
                     <group>

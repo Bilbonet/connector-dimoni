@@ -3,7 +3,7 @@
 {
     "name": "Connector Dimoni",
     "summary": "Connector framework base for Dimoni product import",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "development_status": "Alpha",
     "category": "Connector",
     "website": "https://github.com/Bilbonet/arrace-custom",
@@ -20,8 +20,11 @@
         "views/dimoni_backend_views.xml",
         "views/dimoni_company_views.xml",
         "wizard/dimoni_product_import_wizard_views.xml",
+        "wizard/dimoni_partner_import_wizard_views.xml",
         "views/dimoni_product_template_views.xml",
         "views/product_template_views.xml",
+        "views/dimoni_res_partner_views.xml",
+        "views/res_partner_views.xml",
     ],
     "assets": {
         "web.assets_backend": [

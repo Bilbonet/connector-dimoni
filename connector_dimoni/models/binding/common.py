@@ -19,7 +19,14 @@ class DimoniBinding(models.AbstractModel):
         readonly=True,
         ondelete="restrict",
     )
-    active = fields.Boolean(default=True, readonly=True)
+    binding_active = fields.Boolean(
+        default=True,
+        help=(
+            "Technical active state of the Dimoni binding. This field is not "
+            "named active to avoid shadowing the delegated Odoo record active "
+            "field in _inherits binding models."
+        ),
+    )
     external_id = fields.Integer(
         string="Dimoni ROW_ID",
         readonly=True,

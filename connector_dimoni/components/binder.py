@@ -12,4 +12,5 @@ class DimoniBinder(Component):
     _apply_on = [
         "dimoni.company",
         "dimoni.product.template",
+        "dimoni.res.partner",
     ]
