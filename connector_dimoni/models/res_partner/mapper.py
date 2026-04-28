@@ -25,7 +25,7 @@ class DimoniResPartnerImportMapper(Component):
 
     @mapping
     def active(self, record):
-        return {"active": record.get("Activo") == 1}
+        return {"active": str(record.get("Activo", "")).strip() == "1"}
 
     @mapping
     def comercial(self, record):

@@ -49,7 +49,6 @@
                         type="object"
                         class="btn-primary"
                         icon="fa-refresh"
-                        groups="connector.group_connector_manager"
                         invisible="not dimoni_binding_ids"
                     />
                 </header>

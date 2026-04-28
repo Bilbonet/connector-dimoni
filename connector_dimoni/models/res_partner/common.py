@@ -56,6 +56,7 @@ class DimoniResPartner(models.Model):
     _inherit = "dimoni.binding"
     _inherits = {"res.partner": "odoo_id"}
     _description = "Dimoni Partner Binding"
+    _rec_name = "ref"
 
     odoo_id = fields.Many2one(
         comodel_name="res.partner",

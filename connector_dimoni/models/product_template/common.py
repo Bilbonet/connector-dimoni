@@ -56,6 +56,7 @@ class DimoniProductTemplate(models.Model):
     _inherit = "dimoni.binding"
     _inherits = {"product.template": "odoo_id"}
     _description = "Dimoni Product Template Binding"
+    _rec_name = "default_code"
 
     odoo_id = fields.Many2one(
         comodel_name="product.template",

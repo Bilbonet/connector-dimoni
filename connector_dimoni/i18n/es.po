@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-12 10:36+0000\n"
-"PO-Revision-Date: 2026-04-12 13:01+0200\n"
+"POT-Creation-Date: 2026-04-28 15:05+0000\n"
+"PO-Revision-Date: 2026-04-28 17:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -18,115 +18,60 @@ msgstr ""
 "X-Generator: Poedit 3.9\n"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_variant_count
-msgid "# Product Variants"
-msgstr "# Variantes de Producto"
-
-#. module: connector_dimoni
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_backend_dimoni_backend_company_grp_uniq
 msgid "A backend already exists for this company and GRP_ID."
-msgstr "Ya existe un Backend para este compañía y GRP_ID."
+msgstr "Ya existe un backend para esta compañía y GRP_ID."
 
 #. module: connector_dimoni
 #. odoo-python
 #: code:addons/connector_dimoni/models/dimoni_backend/common.py:0
 msgid "A backend must have a Dimoni company before it can be activated."
-msgstr ""
-"Un Backend debe tener una compañía Dimoni antes de que pueda ser activado."
+msgstr "El backend debe tener una compañía Dimoni antes de poder activarse."
 
 #. module: connector_dimoni
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_company_dimoni_company_backend_grp_uniq
 msgid "A company with the same GRP_ID already exists on this backend."
-msgstr "Una compañía con el mismo GRP_ID ya existe en este backend."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__description_sale
-msgid ""
-"A description of the Product that you want to communicate to your "
-"customers. This description will be copied to every Sales Order, Delivery "
-"Order and Customer Invoice/Credit Note"
-msgstr ""
+msgstr "Ya existe una compañía con el mismo GRP_ID en este backend."
 
 #. module: connector_dimoni
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_binding_dimoni_uniq
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_company_dimoni_uniq
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_product_template_dimoni_uniq
+#: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_res_partner_dimoni_uniq
 msgid "A record with same ID on Dimoni already exists."
-msgstr "Un registro con el mismo ID en Dimoni ya existe."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_needaction
-msgid "Action Needed"
-msgstr "Acción Necesaria"
+msgstr "Ya existe un registro con el mismo ID en Dimoni."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__active
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__active
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__active
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__active
 msgid "Active"
 msgstr "Activo"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_ids
-msgid "Activities"
-msgstr "Actividades"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_exception_decoration
-msgid "Activity Exception Decoration"
-msgstr "Decoración Excepción de Actividad"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_state
-msgid "Activity State"
-msgstr "Estado de la actividad"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_type_icon
-msgid "Activity Type Icon"
-msgstr "Tipo Icono Actividad"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_attachment_count
-msgid "Attachment Count"
-msgstr "Número de adjuntos"
-
-#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__backend_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__backend_id
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_search
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_search
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #. module: connector_dimoni
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_backend
 msgid "Backends"
-msgstr ""
+msgstr "Backends"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__barcode
-msgid "Barcode"
-msgstr "Código de barras"
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__binding_active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__binding_active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__binding_active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__binding_active
+msgid "Binding Active"
+msgstr "Vinculación activa"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__can_image_1024_be_zoomed
-msgid "Can Image 1024 be zoomed"
-msgstr ""
-
-#. module: connector_dimoni
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_partner_import_wizard_form
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_import_wizard_form
 msgid "Cancel"
 msgstr "Cancelar"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__color
-msgid "Color Index"
-msgstr "Índice de Colores"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__combo_ids
-msgid "Combo Choices"
-msgstr ""
 
 #. module: connector_dimoni
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_company
@@ -135,22 +80,21 @@ msgstr "Compañías"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__company_id
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__company_id
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_search
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_search
 msgid "Company"
-msgstr "Compañia"
+msgstr "Compañía"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__code
 msgid "Company Code"
-msgstr "Código Empresa"
+msgstr "Código de compañía"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__dimoni_company_id
 msgid "Company imported from Dimoni and used to scope the connector data."
 msgstr ""
-"Compañía importada de Dimoni y utilizada para filtrar registros en la "
-"coexión."
+"Compañía importada desde Dimoni y usada para acotar los datos del conector."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__grp_id
@@ -159,131 +103,75 @@ msgid ""
 "Company key in Dimoni used in database to bind the records to a specific "
 "company"
 msgstr ""
-"Clave de compañía en Dimoni usada en la base de datos para enlazar "
-"registros con una compañía especifica"
+"Clave de compañía en Dimoni usada en la base de datos para vincular los "
+"registros a una compañía concreta"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__company_id
 msgid "Company who uses this Dimoni Backend."
-msgstr "Compañía que utiliza este Backend de Dimoni."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__uom_category_id
-msgid ""
-"Conversion between Units of Measure can only occur if they belong to the "
-"same category. The conversion will be made based on the ratios."
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__standard_price
-msgid "Cost"
-msgstr "Coste"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__cost_currency_id
-msgid "Cost Currency"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__service_tracking
-msgid "Create on Order"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__create_uid
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__create_uid
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__create_uid
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__create_uid
-msgid "Created by"
-msgstr "Creado por"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__create_date
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__create_date
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__create_date
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__create_date
-msgid "Created on"
-msgstr "Creado el"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__currency_id
-msgid "Currency"
-msgstr "Moneda"
+msgstr "Compañía que utiliza este backend Dimoni."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__sync_date
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__sync_date
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__sync_date
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__sync_date
 msgid "Date and time of the last synchronization with Dimoni."
-msgstr "Fecha y hora de la ultima sincronización con Dimoni."
+msgstr "Fecha y hora de la última sincronización con Dimoni."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__default
 msgid "Default"
-msgstr "Por defecto"
+msgstr "Predeterminado"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__default
 msgid "Default backend for the company."
-msgstr "Backend por defecto par la compañía."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__uom_id
-msgid "Default unit of measure used for all stock operations."
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__uom_po_id
-msgid ""
-"Default unit of measure used for purchase orders. It must be in the same "
-"category as the default unit of measure."
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description
-msgid "Description"
-msgstr "Descripción"
+msgstr "Backend predeterminado para la compañía."
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_product_template_form_dimoni_connector
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_res_partner_form_dimoni_connector
 msgid "Dimoni"
-msgstr ""
+msgstr "Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_backend
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__backend_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__backend_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__backend_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__backend_id
 msgid "Dimoni Backend"
-msgstr ""
+msgstr "Backend Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_backend
 msgid "Dimoni Backends"
-msgstr ""
+msgstr "Backends Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_binding
 msgid "Dimoni Binding (abstract)"
-msgstr ""
+msgstr "Vinculación Dimoni (abstracta)"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__dimoni_binding_ids
 #: model:ir.model.fields,field_description:connector_dimoni.field_product_product__dimoni_binding_ids
 #: model:ir.model.fields,field_description:connector_dimoni.field_product_template__dimoni_binding_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_res_partner__dimoni_binding_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_res_users__dimoni_binding_ids
 msgid "Dimoni Bindings"
-msgstr ""
+msgstr "Vinculaciones Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_company
 msgid "Dimoni Companies"
-msgstr "Empresas Dimoni"
+msgstr "Compañías Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_company
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__dimoni_company_id
 msgid "Dimoni Company"
-msgstr "Empresa Dimoni"
+msgstr "Compañía Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_connector_root
@@ -294,18 +182,31 @@ msgstr "Conector Dimoni"
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__grp_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__grp_id
 msgid "Dimoni GRP_ID"
-msgstr ""
+msgstr "GRP_ID Dimoni"
 
 #. module: connector_dimoni
 #. odoo-javascript
+#: code:addons/connector_dimoni/static/src/xml/dimoni_partner_view_buttons.xml:0
 #: code:addons/connector_dimoni/static/src/xml/dimoni_product_view_buttons.xml:0
 msgid "Dimoni Import"
-msgstr ""
+msgstr "Importación Dimoni"
+
+#. module: connector_dimoni
+#: model:ir.model,name:connector_dimoni.model_dimoni_res_partner
+msgid "Dimoni Partner Binding"
+msgstr "Vinculación de contacto Dimoni"
+
+#. module: connector_dimoni
+#. odoo-python
+#: code:addons/connector_dimoni/models/res_partner/common.py:0
+#: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_res_partner
+msgid "Dimoni Partners"
+msgstr "Contactos Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_product_template
 msgid "Dimoni Product Template Binding"
-msgstr "Enlace Dimoni plantilla de producto"
+msgstr "Vinculación de plantilla de producto Dimoni"
 
 #. module: connector_dimoni
 #. odoo-python
@@ -318,162 +219,81 @@ msgstr "Productos Dimoni"
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__external_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__external_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__external_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__external_id
 msgid "Dimoni ROW_ID"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__display_name
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__display_name
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__display_name
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_document_ids
-msgid "Documents"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_document_count
-msgid "Documents Count"
-msgstr ""
+msgstr "ROW_ID Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__dbsource_id
 msgid "External DB Source"
-msgstr "Origen BD Externa"
+msgstr "Origen de base de datos externo"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__is_favorite
-msgid "Favorite"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_form
+msgid "Fetch the latest partner data from Dimoni."
+msgstr "Obtiene los datos más recientes del contacto desde Dimoni."
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_form
-msgid ""
-"Fetch the latest product data from Dimoni using the internal reference."
-msgstr ""
-"Obtiene los últimos datos de producto en Dimoni utilizando la referencia "
-"interna."
+msgid "Fetch the latest product data from Dimoni."
+msgstr "Obtiene los datos más recientes del producto desde Dimoni."
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_follower_ids
-msgid "Followers"
-msgstr "Seguidores"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_partner_ids
-msgid "Followers (Partners)"
-msgstr "Seguidores (Empresas)"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_type_icon
-msgid "Font awesome icon e.g. fa-tasks"
-msgstr "Fuente awesome icono e.j. fa-tasks"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__packaging_ids
-msgid "Gives the different ways to package the same product."
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__sequence
-msgid "Gives the sequence order when displaying a product list"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__type
-msgid ""
-"Goods are tangible materials and merchandise you provide.\n"
-"A service is a non-material product you provide."
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__has_message
-msgid "Has Message"
-msgstr "Tiene Mensaje"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__id
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__id
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__id
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__id
-msgid "ID"
-msgstr "ID (Identificador)"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_exception_icon
-msgid "Icon"
-msgstr "Icono"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_exception_icon
-msgid "Icon to indicate an exception activity."
-msgstr "Icono para indicar una excepción de actividad."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_needaction
-msgid "If checked, new messages require your attention."
-msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_has_error
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_has_sms_error
-msgid "If checked, some messages have a delivery error."
-msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_1920
-msgid "Image"
-msgstr "Imagen"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_1024
-msgid "Image 1024"
-msgstr "Imagen 1024"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_128
-msgid "Image 128"
-msgstr "Imagen 128"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_256
-msgid "Image 256"
-msgstr "Imagen 256"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_512
-msgid "Image 512"
-msgstr "Imagen 512"
-
-#. module: connector_dimoni
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_partner_import_wizard_form
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_import_wizard_form
 msgid "Import"
 msgstr "Importar"
 
 #. module: connector_dimoni
+#: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_res_partner
+msgid "Import a partner from a backend to create the first binding."
+msgstr ""
+"Importa un contacto desde un backend para crear la primera vinculación."
+
+#. module: connector_dimoni
 #: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_product_template
 msgid "Import a product from a backend to create the first binding."
-msgstr "Importa un producto mediante un Backend para crear el primer enlace."
+msgstr ""
+"Importa un producto desde un backend para crear la primera vinculación."
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_backend_form
 msgid "Import companies"
-msgstr "Compañías Importadas"
+msgstr "Importar compañías"
+
+#. module: connector_dimoni
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_backend_form
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_list
+msgid "Import partner"
+msgstr "Importar contacto"
+
+#. module: connector_dimoni
+#: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_partner_import_wizard
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_partner_import_wizard_form
+msgid "Import partner from Dimoni"
+msgstr "Importar contacto desde Dimoni"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_backend_form
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_list
 msgid "Import product"
-msgstr "Importar Producto"
+msgstr "Importar producto"
 
 #. module: connector_dimoni
 #: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_product_import_wizard
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_import_wizard_form
 msgid "Import product from Dimoni"
-msgstr "Importar Producto de Dimoni"
+msgstr "Importar producto desde Dimoni"
+
+#. module: connector_dimoni
+#. odoo-python
+#: code:addons/connector_dimoni/models/dimoni_backend/common.py:0
+msgid ""
+"Import the companies from Dimoni and select one on the backend before "
+"importing partners."
+msgstr ""
+"Importe las compañías desde Dimoni y seleccione una en el backend antes de "
+"importar contactos."
 
 #. module: connector_dimoni
 #. odoo-python
@@ -482,7 +302,7 @@ msgid ""
 "Import the companies from Dimoni and select one on the backend before "
 "importing products."
 msgstr ""
-"Importa la compañías de Dimoni y selecciona una en el backend antes de "
+"Importe las compañías desde Dimoni y seleccione una en el backend antes de "
 "importar productos."
 
 #. module: connector_dimoni
@@ -492,391 +312,174 @@ msgid ""
 "Import the companies from Dimoni and select one on the backend before "
 "importing records."
 msgstr ""
-"Importa la compañías de Dimoni y selecciona una en el backend antes de "
+"Importe las compañías desde Dimoni y seleccione una en el backend antes de "
 "importar registros."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__default_code
-msgid "Internal Reference"
-msgstr "Referencia Interna"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_is_follower
-msgid "Is Follower"
-msgstr "Es un seguidor"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__has_configurable_attributes
-msgid "Is a configurable product"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__is_product_variant
-msgid "Is a product variant"
-msgstr ""
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__sync_date
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__sync_date
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sync_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__sync_date
 msgid "Last Synchronization"
-msgstr "Ultima Sincronización"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__write_uid
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__write_uid
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__write_uid
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__write_uid
-msgid "Last Updated by"
-msgstr "Ultima actualización por"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__write_date
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__write_date
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__write_date
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__write_date
-msgid "Last Updated on"
-msgstr "Ultima actualización el"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_has_error
-msgid "Message Delivery error"
-msgstr "Error de Envío de Mensaje"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_ids
-msgid "Messages"
-msgstr "Mensajes"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__my_activity_date_deadline
-msgid "My Activity Deadline"
-msgstr "Fecha Límite Mi Actividad"
+msgstr "Última sincronización"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__name
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__name
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__name
 msgid "Name"
 msgstr "Nombre"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_calendar_event_id
-msgid "Next Activity Calendar Event"
-msgstr "Próxima Actividad Calendario Evento"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_date_deadline
-msgid "Next Activity Deadline"
-msgstr "Fecha Límite Siguiente Actividad"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_summary
-msgid "Next Activity Summary"
-msgstr "Resumen de la siguiente actividad"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_type_id
-msgid "Next Activity Type"
-msgstr "Siguiente tipo de actividad"
+#: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_res_partner
+msgid "No Dimoni partners found"
+msgstr "No se encontraron contactos Dimoni"
 
 #. module: connector_dimoni
 #: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_product_template
 msgid "No Dimoni products found"
-msgstr "No se ha encontrado producto en Dimoni"
+msgstr "No se encontraron productos Dimoni"
 
 #. module: connector_dimoni
 #. odoo-python
 #: code:addons/connector_dimoni/models/dimoni_backend/common.py:0
 msgid "No companies were found in Dimoni for the selected database source."
 msgstr ""
-"No se han encontrado compañías en Dimoni para el origen de base de datos "
+"No se encontraron compañías en Dimoni para el origen de base de datos "
 "seleccionado."
+
+#. module: connector_dimoni
+#. odoo-python
+#: code:addons/connector_dimoni/models/res_partner/importer.py:0
+msgid "No partner found in Dimoni for the given reference and backend."
+msgstr ""
+"No se encontró ningún contacto en Dimoni para la referencia y el backend "
+"indicados."
 
 #. module: connector_dimoni
 #. odoo-python
 #: code:addons/connector_dimoni/models/product_template/importer.py:0
 msgid "No product found in Dimoni for the given referenca and backend."
 msgstr ""
-"No se han encontrado productos en Dimoni para esta referencia y backend."
+"No se encontró ningún producto en Dimoni para la referencia y el backend "
+"indicados."
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_needaction_counter
-msgid "Number of Actions"
-msgstr "Número de acciones"
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__odoo_id
+msgid "Partner"
+msgstr "Contacto"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_has_error_counter
-msgid "Number of errors"
-msgstr "Número de errores"
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__partner_code
+msgid "Partner code"
+msgstr "Código de contacto"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_needaction_counter
-msgid "Number of messages requiring action"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_has_error_counter
-msgid "Number of messages with delivery error"
-msgstr "Número de mensajes con error de envío"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__pricelist_item_count
-msgid "Number of price rules"
-msgstr ""
+#: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_res_partner
+msgid "Partners"
+msgstr "Contactos"
 
 #. module: connector_dimoni
 #. odoo-python
 #: code:addons/connector_dimoni/models/dimoni_backend/common.py:0
 msgid "Please select the Dimoni database source first."
-msgstr "Por favor seleccione primero el origen de base de datos."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__list_price
-msgid "Price at which the product is sold to customers."
-msgstr ""
+msgstr "Seleccione primero el origen de base de datos de Dimoni."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__external_id
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__external_id
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__external_id
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__external_id
 msgid "Primary key in database Dimoni"
-msgstr "Clave primaria en la base de datos de Dimoni"
-
-#. module: connector_dimoni
-#: model:ir.model,name:connector_dimoni.model_product_template
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_variant_id
-msgid "Product"
-msgstr "Producto"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__attribute_line_ids
-msgid "Product Attributes"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__categ_id
-msgid "Product Category"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__packaging_ids
-msgid "Product Packages"
-msgstr ""
+msgstr "Clave primaria en la base de datos Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__odoo_id
 msgid "Product Template"
-msgstr "Plantilla Producto"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_tooltip
-msgid "Product Tooltip"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__type
-msgid "Product Type"
-msgstr ""
+msgstr "Plantilla de producto"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__product_code
 msgid "Product code"
-msgstr ""
+msgstr "Código de producto"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_variant_ids
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_product_template
 msgid "Products"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_properties
-msgid "Properties"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__purchase_ok
-msgid "Purchase"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_purchase
-msgid "Purchase Description"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_po_id
-msgid "Purchase Unit"
-msgstr ""
+msgstr "Productos"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_form
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_form
 msgid "Raw Data"
-msgstr "Datos sin procesar"
+msgstr "Datos brutos"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__raw_payload
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__raw_payload
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__raw_payload
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__raw_payload
 msgid "Raw Payload"
-msgstr "Carga de datos sin procesar"
+msgstr "Datos brutos"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__raw_payload
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__raw_payload
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__raw_payload
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__raw_payload
 msgid "Raw Payload (JSON)"
-msgstr "Datos Brutos (JSON)"
+msgstr "Datos brutos (JSON)"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_form
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_form
 msgid "Refresh"
-msgstr "Refrescar"
+msgstr "Actualizar"
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_user_id
-msgid "Responsible User"
-msgstr "Usuario responsable"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "SMS error de entrega"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sale_ok
-msgid "Sales"
-msgstr "Ventas"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_sale
-msgid "Sales Description"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__list_price
-msgid "Sales Price"
-msgstr ""
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_search
+msgid "Search Dimoni Partners"
+msgstr "Buscar contactos Dimoni"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_search
 msgid "Search Dimoni Products"
-msgstr "Busca Productos Dimoni"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sequence
-msgid "Sequence"
-msgstr "Secuencia"
+msgstr "Buscar productos Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__code
 msgid "Short company code shown to the user in the interface."
-msgstr "Nombre corto de compañía mostrado al usuario en la interface."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_state
-msgid ""
-"Status based on activities\n"
-"Overdue: Due date is already passed\n"
-"Today: Activity date is today\n"
-"Planned: Future activities."
-msgstr ""
-"Estado basado en actividades\n"
-"Vencida: la fecha tope ya ha pasado\n"
-"Hoy: La fecha tope es hoy\n"
-"Planificada: futuras actividades."
+msgstr "Código corto de compañía mostrado al usuario en la interfaz."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__store_raw_payload
 msgid "Store Raw Payload"
-msgstr "Almacenar Datos Brutos"
+msgstr "Almacenar datos brutos"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__store_raw_payload
 msgid "Store Raw Payload (JSON) data for Dimoni records."
-msgstr "Almacenar Carga Bruta (JSON) datos para registros Dimoni."
+msgstr "Almacenar datos brutos (JSON) de los registros Dimoni."
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_tag_ids
-msgid "Tags"
-msgstr "Etiquetas"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_exception_decoration
-msgid "Type of the exception activity on record."
-msgstr "Tipo excepción de actividad en el registro."
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_id
-msgid "Unit of Measure"
-msgstr "Unidad de medida"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_name
-msgid "Unit of Measure Name"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_category_id
-msgid "UoM Category"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__valid_product_template_attribute_line_ids
-msgid "Valid Product Attribute Lines"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__standard_price
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__binding_active
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__binding_active
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__binding_active
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__binding_active
 msgid ""
-"Value of the product (automatically computed in AVCO).\n"
-"        Used to value the product when the purchase cost is not known (e.g. "
-"inventory adjustment).\n"
-"        Used to compute margins on sale orders."
+"Technical active state of the Dimoni binding. This field is not named "
+"active to avoid shadowing the delegated Odoo record active field in "
+"_inherits binding models."
 msgstr ""
+"Estado activo técnico de la vinculación Dimoni. Este campo no se llama "
+"active para evitar ocultar el campo active del registro Odoo delegado en "
+"los modelos de vinculación con _inherits."
 
 #. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__variant_seller_ids
-msgid "Variant Seller"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__seller_ids
-msgid "Vendors"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__volume
-msgid "Volume"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__volume_uom_name
-msgid "Volume unit of measure label"
-msgstr ""
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__website_message_ids
-msgid "Website Messages"
-msgstr "Mensajes del sitio web"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__website_message_ids
-msgid "Website communication history"
-msgstr "Historial de comunicaciones del sitio web"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__weight
-msgid "Weight"
-msgstr "Peso"
-
-#. module: connector_dimoni
-#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__weight_uom_name
-msgid "Weight unit of measure label"
-msgstr ""
+#: model:ir.model,name:connector_dimoni.model_dimoni_partner_import_wizard
+msgid "Wizard to import one partner from Dimoni"
+msgstr "Asistente para importar un contacto desde Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_product_import_wizard
 msgid "Wizard to import one product from Dimoni"
-msgstr "Asistente para importar un producto de Dimoni"
+msgstr "Asistente para importar un producto desde Dimoni"
