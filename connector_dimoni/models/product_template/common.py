@@ -51,6 +51,18 @@ class ProductTemplate(models.Model):
         return {"type": "ir.actions.client", "tag": "reload"}
 
 
+class ProductProduct(models.Model):
+    _inherit = "product.product"
+
+    def action_open_dimoni_products(self):
+        self.ensure_one()
+        return self.product_tmpl_id.action_open_dimoni_products()
+
+    def action_refresh(self):
+        self.ensure_one()
+        return self.product_tmpl_id.action_refresh()
+
+
 class DimoniProductTemplate(models.Model):
     _name = "dimoni.product.template"
     _inherit = "dimoni.binding"
