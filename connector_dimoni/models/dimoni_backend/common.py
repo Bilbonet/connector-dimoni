@@ -55,8 +55,8 @@ class DimoniBackend(models.Model):
     _sql_constraints = [
         (
             "dimoni_backend_company_grp_uniq",
-            "unique(company_id, grp_id)",
-            "A backend already exists for this company and GRP_ID.",
+            "unique(company_id, dbsource_id, grp_id)",
+            "A backend already exists for this company, database source, and GRP_ID.",
         )
     ]
 
