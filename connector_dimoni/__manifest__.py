@@ -13,6 +13,7 @@
     "depends": [
         "connector",
         "base_external_dbsource_mssql",
+        "base_location",
         "product",
     ],
     "data": [
