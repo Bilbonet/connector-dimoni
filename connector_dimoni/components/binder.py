@@ -13,4 +13,5 @@ class DimoniBinder(Component):
         "dimoni.company",
         "dimoni.product.template",
         "dimoni.res.partner",
+        "dimoni.res.partner.bank",
     ]

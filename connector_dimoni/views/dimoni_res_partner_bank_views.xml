@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Jesus Ramiro
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html).-->
+<odoo>
+    <record id="view_dimoni_res_partner_bank_search" model="ir.ui.view">
+        <field name="name">dimoni.res.partner.bank.search</field>
+        <field name="model">dimoni.res.partner.bank</field>
+        <field name="arch" type="xml">
+            <search string="Search Dimoni Partner Bank Accounts">
+                <field name="external_id" />
+                <field name="acc_number" />
+                <field name="partner_id" />
+                <field name="odoo_id" />
+                <filter
+                    name="backend"
+                    string="Backend"
+                    context="{'group_by': 'backend_id'}"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id="view_dimoni_res_partner_bank_list" model="ir.ui.view">
+        <field name="name">dimoni.res.partner.bank.list</field>
+        <field name="model">dimoni.res.partner.bank</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="not binding_active">
+                <field name="external_id" />
+                <field name="acc_number" />
+                <field name="partner_id" />
+                <field name="sync_date" />
+                <field name="backend_id" optional="hide" />
+                <field
+                    name="binding_active"
+                    widget="boolean_toggle"
+                    optional="show"
+                    groups="connector.group_connector_manager"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_dimoni_res_partner_bank_form" model="ir.ui.view">
+        <field name="name">dimoni.res.partner.bank.form</field>
+        <field name="model">dimoni.res.partner.bank</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="external_id" />
+                            <field name="odoo_id" />
+                            <field name="partner_id" readonly="1" />
+                        </group>
+                        <group>
+                            <field name="sync_date" />
+                            <field name="backend_id" />
+                            <field name="mandate_ids" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Raw Data" invisible="not raw_payload">
+                            <field
+                                name="raw_payload"
+                                widget="ace"
+                                readonly="1"
+                                options="{'language': 'json', 'tabSize': 2}"
+                            />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dimoni_res_partner_bank" model="ir.actions.act_window">
+        <field name="name">Dimoni Partner Bank Accounts</field>
+        <field name="res_model">dimoni.res.partner.bank</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'active_test': False}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Dimoni partner bank accounts found
+            </p>
+            <p>
+                Import or refresh a Dimoni partner to import its bank accounts.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_dimoni_res_partner_bank"
+        name="Partner Bank Accounts"
+        parent="menu_dimoni_connector_root"
+        action="action_dimoni_res_partner_bank"
+        sequence="50"
+    />
+</odoo>

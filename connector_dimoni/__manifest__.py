@@ -13,6 +13,8 @@
     "depends": [
         "connector",
         "base_external_dbsource_mssql",
+        "base_bank_from_iban",
+        "account_banking_mandate",
         "base_location",
         "product",
     ],
@@ -25,6 +27,7 @@
         "views/dimoni_product_template_views.xml",
         "views/product_template_views.xml",
         "views/dimoni_res_partner_views.xml",
+        "views/dimoni_res_partner_bank_views.xml",
         "views/res_partner_views.xml",
     ],
     "assets": {

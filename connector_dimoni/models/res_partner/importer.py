@@ -86,13 +86,18 @@ class DimoniResPartnerImporter(Component):
         binding = binder.to_internal(external_id)
         if binding:
             if force_update:
-                self._update_dimoni_partner(partner_data=partner_data)
+                binding = self._update_dimoni_partner(partner_data=partner_data)
+            self._import_bank_accounts(binding, partner_data, force_update=force_update)
             return binding
 
         # 2.) Not imported but exists a partner with the code in ref
         partner = self._search_partner_by_ref(partner_data=partner_data)
 
-        return self._create_dimoni_partner(partner_data=partner_data, partner=partner)
+        binding = self._create_dimoni_partner(
+            partner_data=partner_data, partner=partner
+        )
+        self._import_bank_accounts(binding, partner_data, force_update=force_update)
+        return binding
 
     def _update_dimoni_partner(self, *, partner_data):
         external_id = partner_data.get("ROW_ID")
@@ -133,6 +138,23 @@ class DimoniResPartnerImporter(Component):
             partner_vals.update({"odoo_id": partner.id})
 
         return self.env["dimoni.res.partner"].sudo().create(partner_vals)
+
+    def _import_bank_accounts(self, binding, partner_data, force_update=False):
+        if not binding:
+            return
+        id_fiscal = (partner_data.get("Nif") or "").strip()
+        partner_ref = (partner_data.get("Codigo") or "").strip()
+        if not id_fiscal or not partner_ref:
+            return
+        importer = self.component(
+            usage="record.importer", model_name="dimoni.res.partner.bank"
+        )
+        importer.import_for_partner(
+            id_fiscal=id_fiscal,
+            partner_ref=partner_ref,
+            partner=binding.odoo_id,
+            force_update=force_update,
+        )
 
     def _deactivate_missing_binding(self, row_id):
         binding = (

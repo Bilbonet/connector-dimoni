@@ -3,3 +3,4 @@ from . import dimoni_backend
 from . import dimoni_company
 from . import product_template
 from . import res_partner
+from . import res_partner_bank
