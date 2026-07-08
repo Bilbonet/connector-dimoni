@@ -6,20 +6,34 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-28 15:05+0000\n"
-"PO-Revision-Date: 2026-04-28 17:28+0200\n"
+"POT-Creation-Date: 2026-07-08 10:43+0000\n"
+"PO-Revision-Date: 2026-07-08 10:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.9\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__meeting_count
+msgid "# Meetings"
+msgstr "Nº de reuniones"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_variant_count
+msgid "# Product Variants"
+msgstr "# Variantes de Producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__supplier_invoice_count
+msgid "# Vendor Bills"
+msgstr "N.° de facturas de proveedores"
 
 #. module: connector_dimoni
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_backend_dimoni_backend_company_grp_uniq
-msgid "A backend already exists for this company and GRP_ID."
+msgid ""
+"A backend already exists for this company, database source, and GRP_ID."
 msgstr "Ya existe un backend para esta compañía y GRP_ID."
 
 #. module: connector_dimoni
@@ -31,25 +45,215 @@ msgstr "El backend debe tener una compañía Dimoni antes de poder activarse."
 #. module: connector_dimoni
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_company_dimoni_company_backend_grp_uniq
 msgid "A company with the same GRP_ID already exists on this backend."
-msgstr "Ya existe una compañía con el mismo GRP_ID en este backend."
+msgstr "Una compañía con el mismo GRP_ID ya existe en este backend."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__description_sale
+msgid ""
+"A description of the Product that you want to communicate to your customers."
+" This description will be copied to every Sales Order, Delivery Order and "
+"Customer Invoice/Credit Note"
+msgstr ""
+"Una descripción del producto que quiera comunicar a sus clientes. Esta descripción se copiará a cada pedido de venta, orden de entrega y factura/factura rectificativa del cliente."
 
 #. module: connector_dimoni
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_binding_dimoni_uniq
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_company_dimoni_uniq
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_product_template_dimoni_uniq
+#: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_res_partner_bank_dimoni_uniq
 #: model:ir.model.constraint,message:connector_dimoni.constraint_dimoni_res_partner_dimoni_uniq
 msgid "A record with same ID on Dimoni already exists."
-msgstr "Ya existe un registro con el mismo ID en Dimoni."
+msgstr "Un registro con el mismo ID en Dimoni ya existe."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__is_storable
+msgid "A storable product is a product for which you manage stock."
+msgstr "Los productos almacenables son productos para los que gestiona el inventario."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__partner_id
+msgid "Account Holder"
+msgstr "Titular de la cuenta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__acc_holder_name
+msgid "Account Holder Name"
+msgstr "Nombre del titular de la cuenta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__journal_id
+msgid "Account Journal"
+msgstr "Diario contable"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__acc_number
+msgid "Account Number"
+msgstr "Número de cuenta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_account_payable_id
+msgid "Account Payable"
+msgstr "Cuenta por pagar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_account_receivable_id
+msgid "Account Receivable"
+msgstr "Cuentas por cobrar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__account_tag_ids
+msgid "Account Tags"
+msgstr "Etiquetas de cuenta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__acc_holder_name
+msgid ""
+"Account holder name, in case it is different than the name of the Account "
+"Holder"
+msgstr ""
+"Nombre del titular de la cuenta, en caso de que sea diferente al nombre del titular de la cuenta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_needaction
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_needaction
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_needaction
+msgid "Action Needed"
+msgstr "Acción Necesaria"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__active
 msgid "Active"
 msgstr "Activo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__active_lang_count
+msgid "Active Lang Count"
+msgstr "Número de idiomas activos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_exception_decoration
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_exception_decoration
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración Excepción de Actividad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_state
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_state
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_state
+msgid "Activity State"
+msgstr "Estado de la actividad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_type_icon
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_type_icon
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Tipo Icono Actividad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__additional_info
+msgid "Additional info"
+msgstr "Información adicional"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__type
+msgid "Address Type"
+msgstr "Tipo de dirección"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__agent_ids
+msgid "Agents"
+msgstr "Agentes"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__lang
+msgid ""
+"All the emails and documents sent to this contact will be translated in this"
+" language."
+msgstr ""
+"Todos los correos electrónicos y documentos enviados a este contacto se traducirán en este idioma."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_attachment_count
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_attachment_count
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_attachment_count
+msgid "Attachment Count"
+msgstr "Número de adjuntos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__autopost_bills
+msgid "Auto-post bills"
+msgstr "Registrar facturas automáticamente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__autopost_bills
+msgid "Automatically post bills for this trusted partner"
+msgstr "Registrar facturas automáticamente para este contacto de confianza"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__receipt_reminder_email
+msgid ""
+"Automatically send a confirmation email to the vendor X days before the "
+"expected receipt date, asking him to confirm the exact date."
+msgstr ""
+"Envíe automáticamente un correo electrónico de confirmación al proveedor X días antes de la fecha de recepción prevista, pidiéndole que confirme la fecha exacta."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__available_peppol_eas
+msgid "Available Peppol Eas"
+msgstr "EAS de Peppol disponible"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__available_peppol_edi_formats
+msgid "Available Peppol Edi Formats"
+msgstr "Formatos EDI Peppol disponibles"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__available_peppol_sending_methods
+msgid "Available Peppol Sending Methods"
+msgstr "Métodos de envío Peppol disponibles"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__avatar_1920
+msgid "Avatar"
+msgstr "Avatar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__avatar_1024
+msgid "Avatar 1024"
+msgstr "Avatar 1024"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__avatar_128
+msgid "Avatar 128"
+msgstr "Avatar 128"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__avatar_256
+msgid "Avatar 256"
+msgstr "Avatar 256"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__avatar_512
+msgid "Avatar 512"
+msgstr "Avatar 512"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__backend_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__backend_id
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_search
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_bank_search
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_search
 msgid "Backend"
 msgstr "Backend"
@@ -60,12 +264,89 @@ msgid "Backends"
 msgstr "Backends"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__bank_account_count
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__bank_id
+msgid "Bank"
+msgstr "Banco"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__odoo_id
+msgid "Bank Account"
+msgstr "Cuenta bancaria"
+
+#. module: connector_dimoni
+#: model:ir.model,name:connector_dimoni.model_res_partner_bank
+msgid "Bank Accounts"
+msgstr "Cuentas bancarias"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__bank_bic
+msgid "Bank Identifier Code"
+msgstr "Código de identificación bancaria"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__acc_type
+msgid ""
+"Bank account type: Normal or IBAN. Inferred from the bank account number."
+msgstr "Tipo de cuenta bancaria: Normal o IBAN. Se infiere del número de cuenta."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__mandate_ids
+msgid ""
+"Banking mandates represent an authorization that the bank account owner "
+"gives to a company for a specific operation."
+msgstr ""
+"Los mandatos bancarios representan una autorización que el propietario de la cuenta bancaria da a una compañía para una operación específica."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__bank_ids
+msgid "Banks"
+msgstr "Bancos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__barcode
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__barcode
+msgid "Barcode"
+msgstr "Código de barras"
+
+#. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__binding_active
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__binding_active
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__binding_active
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__binding_active
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__binding_active
 msgid "Binding Active"
 msgstr "Vinculación activa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__is_blacklisted
+msgid "Blacklist"
+msgstr "Lista negra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__mobile_blacklisted
+msgid "Blacklisted Phone Is Mobile"
+msgstr "El teléfono en la lista negra es un móvil"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__phone_blacklisted
+msgid "Blacklisted Phone is Phone"
+msgstr "El teléfono en la lista negra es un teléfono"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_bounce
+msgid "Bounce"
+msgstr "Rebotado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__buyer_id
+msgid "Buyer"
+msgstr "Comprador"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__can_image_1024_be_zoomed
+msgid "Can Image 1024 be zoomed"
+msgstr "¿Se puede ampliar la imagen 1024?"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_partner_import_wizard_form
@@ -74,27 +355,164 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__route_from_categ_ids
+msgid "Category Routes"
+msgstr "Rutas de categoría"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__channel_ids
+msgid "Channels"
+msgstr "Canales"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__is_company
+msgid "Check if the contact is a company, otherwise it is a person"
+msgstr "Marque esta casilla si el contacto es una compañía. En caso contrario, será una persona."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__employee
+msgid "Check this box if this contact is an Employee."
+msgstr "Seleccione esta casilla si el contacto es un Empleado."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__country_enforce_cities
+msgid ""
+"Check this box to ensure every address created in that country has a 'City' "
+"chosen in the list of the country's cities."
+msgstr ""
+"Marque esta casilla para asegurarse de que cada dirección creada en ese país tenga una 'ciudad' elegida entre las que se encuentran en la lista de ciudades del país."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__agent
+msgid "Check this field if the partner is a creditor or an agent."
+msgstr "Marque este campo si el socio es acreedor o un agente."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__city
+msgid "City"
+msgstr "Ciudad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__city_id
+msgid "City ID"
+msgstr "ID de la ciudad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_center_code
+msgid "Code"
+msgstr "Código"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_logical_operational_point
+msgid ""
+"Code identifying the company. Barcode of 13 standard positions. Codes are "
+"registered in Spain by AECOC. The code is made up of the country code (2 "
+"positions) Spain is '84' + Company code (5 positions) + the remaining "
+"positions. The last one is the product + check digit."
+msgstr ""
+"Código identificativo de la empresa. Código de barras de 13 posiciones estándar. Los códigos están registrados por la AECOC en España. Recoge el código de país (2 posiciones) (España es ’84’) + el código de la empresa (5 posiciones) + los restantes. El último es el producto + el dígito de control."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_center_code
+msgid "Code of the issuing department."
+msgstr "Número del departamento emisor."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__peppol_eas
+msgid ""
+"Code used to identify the Endpoint for BIS Billing 3.0 and its derivatives.\n"
+"             List available at https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/"
+msgstr ""
+"El código que se utiliza para identificar el punto extremo para la facturación BIS 3.0 y sus derivadas.\n"
+"             La lista se encuentra disponible en https://docs.peppol.eu/poacc/billing/3.0/codelist/eas/"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__color
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__color
+msgid "Color Index"
+msgstr "Índice de Colores"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__combo_ids
+msgid "Combo Choices"
+msgstr "Opciones de combinaciones"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Entidad comercial"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__commercial_zone_id
+msgid "Commercial Zone"
+msgstr "Zona comercial"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__commission_id
+msgid "Commission"
+msgstr "Comisión"
+
+#. module: connector_dimoni
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_company
 msgid "Companies"
 msgstr "Compañías"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__ref_company_ids
+msgid "Companies that refers to partner"
+msgstr "Empresas que se refieren al contacto"
+
+#. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__company_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__company_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__company_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__company_id
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_search
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_search
 msgid "Company"
-msgstr "Compañía"
+msgstr "Compañia"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__code
 msgid "Company Code"
-msgstr "Código de compañía"
+msgstr "Código Empresa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__company_registry
+msgid "Company ID"
+msgstr "ID de empresa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__company_registry_label
+msgid "Company ID Label"
+msgstr "Etiqueta de ID de empresa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__company_name
+msgid "Company Name"
+msgstr "Nombre de la empresa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__commercial_company_name
+msgid "Company Name Entity"
+msgstr "Entidad del nombre de la compañía"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__company_type
+msgid "Company Type"
+msgstr "Tipo de compañía"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__partner_gid
+msgid "Company database ID"
+msgstr "ID de la base de datos de la compañía"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__dimoni_company_id
 msgid "Company imported from Dimoni and used to scope the connector data."
 msgstr ""
-"Compañía importada desde Dimoni y usada para acotar los datos del conector."
+"Compañía importada de Dimoni y utilizada para filtrar registros en la "
+"coexión."
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__grp_id
@@ -103,31 +521,252 @@ msgid ""
 "Company key in Dimoni used in database to bind the records to a specific "
 "company"
 msgstr ""
-"Clave de compañía en Dimoni usada en la base de datos para vincular los "
-"registros a una compañía concreta"
+"Clave de compañía en Dimoni usada en la base de datos para enlazar registros"
+" con una compañía especifica"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__company_id
 msgid "Company who uses this Dimoni Backend."
-msgstr "Compañía que utiliza este backend Dimoni."
+msgstr "Compañía que utiliza este Backend de Dimoni."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__contact_address
+msgid "Complete Address"
+msgstr "Dirección completa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__complete_name
+msgid "Complete Name"
+msgstr "Nombre completo"
+
+#. module: connector_dimoni
+#: model:ir.model,name:connector_dimoni.model_res_partner
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__child_ids
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__purchase_method
+msgid "Control Policy"
+msgstr "Política de control"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre las unidades de medidas sólo puede ocurrir si pertenecen a la misma categoría. La conversión se basará en los índices establecidos."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__standard_price
+msgid "Cost"
+msgstr "Coste"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__cost_currency_id
+msgid "Cost Currency"
+msgstr "Moneda del coste"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__cost_method
+msgid "Costing Method"
+msgstr "Método de coste"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__message_bounce
+msgid "Counter of the number of bounced emails for this contact"
+msgstr "Contador del número de correos electrónicos rebotados de este contacto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__country_id
+msgid "Country"
+msgstr "País"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__country_code
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__country_code
+msgid "Country Code"
+msgstr "Código de país"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__partner_country_name
+msgid "Country Name"
+msgstr "Nombre del país"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__service_tracking
+msgid "Create on Order"
+msgstr "Crear en el pedido"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__create_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__create_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__create_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__create_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__create_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__create_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__create_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__create_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__create_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__create_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__create_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__create_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__credit_limit
+msgid "Credit Limit"
+msgstr "Crédito concedido"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__credit_to_invoice
+msgid "Credit To Invoice"
+msgstr "Crédito a facturar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__credit_limit
+msgid "Credit limit specific to this partner."
+msgstr "Crédito concedido específico para este contacto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__agent
+msgid "Creditor/Agent"
+msgstr "Acreedor/Agente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__currency_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__currency_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sale_delay
+msgid "Customer Lead Time"
+msgstr "Plazo de entrega del cliente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_stock_customer
+msgid "Customer Location"
+msgstr "Ubicación de cliente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__customer_payment_mode_id
+msgid "Customer Payment Mode"
+msgstr "Modo de pago de cliente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_payment_term_id
+msgid "Customer Payment Terms"
+msgstr "Condiciones de pago de cliente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__customer_rank
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__partner_customer_rank
+msgid "Customer Rank"
+msgstr "Rango del cliente"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__sync_date
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__sync_date
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__sync_date
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__sync_date
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__sync_date
 msgid "Date and time of the last synchronization with Dimoni."
-msgstr "Fecha y hora de la última sincronización con Dimoni."
+msgstr "Fecha y hora de la ultima sincronización con Dimoni."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__reminder_date_before_receipt
+msgid "Days Before Receipt"
+msgstr "Días antes de la recepción"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__days_sales_outstanding
+msgid "Days Sales Outstanding (DSO)"
+msgstr "Periodo medio de cobros (DSO)"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__default
 msgid "Default"
-msgstr "Predeterminado"
+msgstr "Por defecto"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__default
 msgid "Default backend for the company."
-msgstr "Backend predeterminado para la compañía."
+msgstr "Backend por defecto par la compañía."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__supplier_taxes_id
+msgid "Default taxes used when buying the product"
+msgstr "Impuestos por defecto usados cuando se compra el producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__taxes_id
+msgid "Default taxes used when selling the product"
+msgstr "Impuestos por defecto usados cuando se vende el producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr "Unidad de medida por defecto utilizada para todas las operaciones de stock"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__uom_po_id
+msgid ""
+"Default unit of measure used for purchase orders. It must be in the same "
+"category as the default unit of measure."
+msgstr ""
+"Unidad de medida por defecto utilizada para los pedidos de compra. Debe estar en la misma categoría que la unidad de medida por defecto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__trust
+msgid "Degree of trust you have in this debtor"
+msgstr "Grado de confianza en este deudor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__sale_delay
+msgid ""
+"Delivery lead time, in days. It's the number of days, promised to the "
+"customer, between the confirmation of the sales order and the delivery."
+msgstr ""
+"Plazo de entrega, en días. Es el numero de días, prometidos al cliente, desde la confirmación del pedido de venta hasta la entrega"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__route_ids
+msgid ""
+"Depending on the modules installed, this will allow you to define the route "
+"of the product: whether it will be bought, manufactured, replenished on "
+"order, etc."
+msgstr ""
+"Dependiendo de los módulos instalados, esto le permitirá definir la ruta del producto: si se comprará, se fabricará, se repondrá bajo pedido, etc."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_pickingout
+msgid "Description on Delivery Orders"
+msgstr "Descripción en las órdenes de entrega"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_picking
+msgid "Description on Picking"
+msgstr "Descripción en recolección"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_pickingin
+msgid "Description on Receptions"
+msgstr "Descripción en recepciones"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_product_template_form_dimoni_connector
@@ -141,6 +780,7 @@ msgstr "Dimoni"
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__backend_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__backend_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__backend_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__backend_id
 msgid "Dimoni Backend"
 msgstr "Backend Dimoni"
 
@@ -155,9 +795,14 @@ msgid "Dimoni Binding (abstract)"
 msgstr "Vinculación Dimoni (abstracta)"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_account_setup_bank_manual_config__dimoni_binding_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__dimoni_binding_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__dimoni_binding_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__dimoni_binding_ids
 #: model:ir.model.fields,field_description:connector_dimoni.field_product_product__dimoni_binding_ids
 #: model:ir.model.fields,field_description:connector_dimoni.field_product_template__dimoni_binding_ids
 #: model:ir.model.fields,field_description:connector_dimoni.field_res_partner__dimoni_binding_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_res_partner_bank__dimoni_binding_ids
 #: model:ir.model.fields,field_description:connector_dimoni.field_res_users__dimoni_binding_ids
 msgid "Dimoni Bindings"
 msgstr "Vinculaciones Dimoni"
@@ -165,13 +810,13 @@ msgstr "Vinculaciones Dimoni"
 #. module: connector_dimoni
 #: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_company
 msgid "Dimoni Companies"
-msgstr "Compañías Dimoni"
+msgstr "Empresas Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_company
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__dimoni_company_id
 msgid "Dimoni Company"
-msgstr "Compañía Dimoni"
+msgstr "Empresa Dimoni"
 
 #. module: connector_dimoni
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_connector_root
@@ -192,6 +837,16 @@ msgid "Dimoni Import"
 msgstr "Importación Dimoni"
 
 #. module: connector_dimoni
+#: model:ir.model,name:connector_dimoni.model_dimoni_res_partner_bank
+msgid "Dimoni Partner Bank Account Binding"
+msgstr "Vinculación Dimoni de cuenta bancaria de contacto"
+
+#. module: connector_dimoni
+#: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_res_partner_bank
+msgid "Dimoni Partner Bank Accounts"
+msgstr "Cuentas bancarias de contactos Dimoni"
+
+#. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_res_partner
 msgid "Dimoni Partner Binding"
 msgstr "Vinculación de contacto Dimoni"
@@ -206,7 +861,7 @@ msgstr "Contactos Dimoni"
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_product_template
 msgid "Dimoni Product Template Binding"
-msgstr "Vinculación de plantilla de producto Dimoni"
+msgstr "Enlace Dimoni plantilla de producto"
 
 #. module: connector_dimoni
 #. odoo-python
@@ -220,13 +875,125 @@ msgstr "Productos Dimoni"
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__external_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__external_id
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__external_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__external_id
 msgid "Dimoni ROW_ID"
 msgstr "ROW_ID Dimoni"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__mandate_ids
+msgid "Direct Debit Mandates"
+msgstr "Mandatos de adeudo directo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__display_invoice_edi_format
+msgid "Display Invoice Edi Format"
+msgstr "Mostrar formato EDI de la factura"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__display_invoice_template_pdf_report_id
+msgid "Display Invoice Template Pdf Report"
+msgstr "Mostrar informe PDF de la plantilla de la factura"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__display_name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__display_name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__display_name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__display_name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__display_name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__display_name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_document_ids
+msgid "Documents"
+msgstr "Documentos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_document_count
+msgid "Documents Count"
+msgstr "Número de documentos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__street_number2
+msgid "Door"
+msgstr "Puerta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__duplicate_bank_partner_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__duplicate_bank_partner_ids
+msgid "Duplicate Bank Partner"
+msgstr "Duplicar contacto de banco"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__duplicated_bank_account_partners_count
+msgid "Duplicated Bank Account Partners Count"
+msgstr "Número de empresas con cuenta bancaria duplicada"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__partner_share
+msgid ""
+"Either customer (not a user), either shared user. Indicated the current "
+"partner is a customer without access or with a limited access created for "
+"sharing data."
+msgstr ""
+"Cliente (no usuario) o usuario compartido. Indica que el contacto actual es un cliente sin acceso o con acceso limitado creado para compartir datos."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__email
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__employee_ids
+msgid "Employees"
+msgstr "Empleados"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__employees_count
+msgid "Employees Count"
+msgstr "Número de empleados"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__country_enforce_cities
+msgid "Enforce Cities"
+msgstr "Forzar ciudades"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__tracking
+msgid "Ensure the traceability of a storable product in your warehouse."
+msgstr "Asegure la trazabilidad de un producto almacenable en su almacén."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__vies_valid
+msgid "European VAT numbers are automatically checked on the VIES database."
+msgstr "Los números de IVA europeos se verifican automáticamente en la base de datos VIES."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__property_account_expense_id
+msgid "Expense Account"
+msgstr "Cuenta de gastos"
+
+#. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__dbsource_id
 msgid "External DB Source"
-msgstr "Origen de base de datos externo"
+msgstr "Origen BD Externa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_residence_type
+msgid "Facturae EDI Residency Type Code"
+msgstr "Código del tipo de residencia EDI de Facturae"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__is_favorite
+msgid "Favorite"
+msgstr "Favorito"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_form
@@ -237,6 +1004,257 @@ msgstr "Obtiene los datos más recientes del contacto desde Dimoni."
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_form
 msgid "Fetch the latest product data from Dimoni."
 msgstr "Obtiene los datos más recientes del producto desde Dimoni."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__phone_sanitized
+msgid ""
+"Field used to store sanitized phone number. Helps speeding up searches and "
+"comparisons."
+msgstr ""
+"Campo utilizado para almacenar el número de teléfono depurado. Ayuda a acelerar las búsquedas y las comparaciones."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__valid_mandate_id
+msgid "First Valid Mandate"
+msgstr "Primer mandato válido"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__fiscal_country_codes
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__fiscal_country_codes
+msgid "Fiscal Country Codes"
+msgstr "Códigos de país fiscal"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_account_position_id
+msgid "Fiscal Position"
+msgstr "Posición fiscal"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_follower_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_follower_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_partner_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_partner_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Empresas)"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_type_icon
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__activity_type_icon
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Fuente awesome icono e.j. fa-tasks"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__virtual_available
+msgid "Forecasted Quantity"
+msgstr "Cantidad prevista"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__email_formatted
+msgid "Format email address \"Name <email@domain>\""
+msgstr "Dirección de correo electrónico con formato \"Nombre <email@domain>\""
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__email_formatted
+msgid "Formatted Email"
+msgstr "Correo electrónico formateado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__commission_free
+msgid "Free of commission"
+msgstr "Libre de comisión"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__partner_latitude
+msgid "Geo Latitude"
+msgstr "Latitud geográfica"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__partner_longitude
+msgid "Geo Longitude"
+msgstr "Longitud geográfica"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__packaging_ids
+msgid "Gives the different ways to package the same product."
+msgstr "Proporciona las diferentes formas de empaquetar el mismo producto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__sequence
+msgid "Gives the sequence order when displaying a product list"
+msgstr "Proporciona el orden de secuencia al mostrar una lista de productos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__type
+msgid ""
+"Goods are tangible materials and merchandise you provide.\n"
+"A service is a non-material product you provide."
+msgstr ""
+"Los bienes son productos materiales tangibles que usted proporciona.\n"
+"Los servicios son productos inmateriales que usted proporciona."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__has_iban_warning
+msgid "Has Iban Warning"
+msgstr "Tiene advertencia IBAN"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__has_message
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__has_message
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__has_message
+msgid "Has Message"
+msgstr "Tiene Mensaje"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__has_money_transfer_warning
+msgid "Has Money Transfer Warning"
+msgstr "Tiene advertencia de transferencia de dinero"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__street_number
+msgid "House"
+msgstr "Casa"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__id
+msgid "ID"
+msgstr "ID (Identificador)"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__im_status
+msgid "IM Status"
+msgstr "Estado de mensajería instantanea"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_exception_icon
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_exception_icon
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_exception_icon
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__activity_exception_icon
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una excepción de actividad."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_physical_gln
+msgid ""
+"Identification of the connection point to the VAN EDI (Global Location "
+"Number). Barcode of 13 standard positions. Codes are registered in Spain by "
+"AECOC. The code is made up of the country code (2 positions) Spain is '84' +"
+" Company code (5 positions) + the remaining positions. The last one is the "
+"product + check digit."
+msgstr ""
+"Identificación del punto de conexión a la VAN EDI (Global Location Number). Código de barras de 13 posiciones estándar. Los códigos están registrados por la AECOC en España. Recoge el código de país (2 posiciones) (España es ’84’) + el código de la empresa (5 posiciones) + los restantes. El último es el producto + el dígito de control."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_needaction
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__message_needaction
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, hay nuevos mensajes que requieren su atención."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_has_error
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_has_sms_error
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__message_has_error
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__message_has_sms_error
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__message_has_error
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si se encuentra marcado, algunos mensajes tienen error de envío."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__lot_valuated
+msgid "If checked, the valuation will be specific by Lot/Serial number."
+msgstr ""
+"Si se encuentra seleccionado, la valoración será específica para cada número de serie o lote."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__is_blacklisted
+msgid ""
+"If the email address is on the blacklist, the contact won't receive mass "
+"mailing anymore, from any list"
+msgstr ""
+"Si la dirección de correo electrónico esta en la lista negra, el contacto ya no recibirá correo masivo de cualquier lista."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__phone_sanitized_blacklisted
+msgid ""
+"If the sanitized phone number is on the blacklist, the contact won't receive"
+" mass mailing sms anymore, from any list"
+msgstr ""
+"Si el teléfono está en la lista negra, el contacto ya no recibirá correo masivo de sms de ninguna lista."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__service_to_purchase
+msgid ""
+"If ticked, each time you sell this product through a SO, a RfQ is "
+"automatically created to buy the product. Tip: don't forget to set a vendor "
+"on the product."
+msgstr ""
+"Si se selecciona, cada vez que venda este producto a través de un pedido de venta se creará automáticamente una solicitud de presupuesto para la compra del producto. Le aconsejamos que no olvide establecer un proveedor en el producto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__active
+msgid ""
+"If unchecked, it will allow you to hide the product without removing it."
+msgstr "Si no está marcado, permitirá ocultar el producto sin eliminarlo."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__ignore_abnormal_invoice_amount
+msgid "Ignore Abnormal Invoice Amount"
+msgstr "Ignorar importe de factura anormal"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__ignore_abnormal_invoice_date
+msgid "Ignore Abnormal Invoice Date"
+msgstr "Ignorar fecha de factura anormal"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_1920
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__image_1920
+msgid "Image"
+msgstr "Imagen"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_1024
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__image_1024
+msgid "Image 1024"
+msgstr "Imagen 1024"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_128
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__image_128
+msgid "Image 128"
+msgstr "Imagen 128"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_256
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__image_256
+msgid "Image 256"
+msgstr "Imagen 256"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__image_512
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__image_512
+msgid "Image 512"
+msgstr "Imagen 512"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_partner_import_wizard_form
@@ -253,13 +1271,17 @@ msgstr ""
 #. module: connector_dimoni
 #: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_product_template
 msgid "Import a product from a backend to create the first binding."
-msgstr ""
-"Importa un producto desde un backend para crear la primera vinculación."
+msgstr "Importa un producto mediante un Backend para crear el primer enlace."
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_backend_form
 msgid "Import companies"
-msgstr "Importar compañías"
+msgstr "Compañías Importadas"
+
+#. module: connector_dimoni
+#: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_res_partner_bank
+msgid "Import or refresh a Dimoni partner to import its bank accounts."
+msgstr "Importe o actualice un contacto Dimoni para importar sus cuentas bancarias."
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_backend_form
@@ -277,13 +1299,13 @@ msgstr "Importar contacto desde Dimoni"
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_backend_form
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_list
 msgid "Import product"
-msgstr "Importar producto"
+msgstr "Importar Producto"
 
 #. module: connector_dimoni
 #: model:ir.actions.act_window,name:connector_dimoni.action_dimoni_product_import_wizard
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_import_wizard_form
 msgid "Import product from Dimoni"
-msgstr "Importar producto desde Dimoni"
+msgstr "Importar Producto de Dimoni"
 
 #. module: connector_dimoni
 #. odoo-python
@@ -316,18 +1338,374 @@ msgstr ""
 "importar registros."
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__property_account_income_id
+msgid "Income Account"
+msgstr "Cuenta de ingresos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__incoming_qty
+msgid "Incoming"
+msgstr "Entrada"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__mobile_blacklisted
+msgid ""
+"Indicates if a blacklisted sanitized phone number is a mobile number. Helps "
+"distinguish which number is blacklisted             when there is both a "
+"mobile and phone field in a model."
+msgstr ""
+"Indica si el número de teléfono en la lista negra es un número móvil. Sirve para distinguir qué número está en la lista negra cuando hay un campo de móvil y otro de teléfono fijo en un modelo."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__phone_blacklisted
+msgid ""
+"Indicates if a blacklisted sanitized phone number is a phone number. Helps "
+"distinguish which number is blacklisted             when there is both a "
+"mobile and phone field in a model."
+msgstr ""
+"Indica si el número de teléfono en la lista negra es un teléfono fijo. Sirve para distinguir qué número está en la lista negra cuando hay un campo de móvil y otro de teléfono fijo en un modelo."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__industry_id
+msgid "Industry"
+msgstr "Sector"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__contact_address_inline
+msgid "Inlined Complete Address"
+msgstr "Dirección completa Inline"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__default_code
+msgid "Internal Reference"
+msgstr "Referencia Interna"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__vies_valid
+msgid "Intra-Community Valid"
+msgstr "Validez intracomunitaria"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__property_stock_inventory
+msgid "Inventory Location"
+msgstr "Ubicación de inventario"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__valuation
+msgid "Inventory Valuation"
+msgstr "Valoración del inventario"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_warn
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_edi_format_store
+msgid "Invoice Edi Format Store"
+msgstr "Almacenamiento de formato EDI de factura"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_sending_method
+msgid "Invoice sending"
+msgstr "Envío de facturas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_template_pdf_report_id
+msgid "Invoice template"
+msgstr "Plantilla de factura"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_ids
+msgid "Invoices"
+msgstr "Facturas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__invoice_policy
+msgid "Invoicing Policy"
+msgstr "Política de facturación"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__is_coa_installed
+msgid "Is Coa Installed"
+msgstr "¿El plan contable está instalado?"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_is_follower
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_is_follower
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_is_follower
+msgid "Is Follower"
+msgstr "Es un seguidor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__is_peppol_edi_format
+msgid "Is Peppol Edi Format"
+msgstr "Es formato de EDI de Peppol"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__is_public
+msgid "Is Public"
+msgstr "Es público"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__is_ubl_format
+msgid "Is Ubl Format"
+msgstr "Es formato UBL"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__is_company
+msgid "Is a Company"
+msgstr "¿Es una empresa?"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__has_configurable_attributes
+msgid "Is a configurable product"
+msgstr "Es un producto configurable"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__is_product_variant
+msgid "Is a product variant"
+msgstr "Es una variante de producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_role_type_ids
+msgid ""
+"It indicates the role played by the Operational Point defined as a Workplace/Department.\n"
+"These functions are:\n"
+"- Receiver: Workplace associated to the recipient's tax identification number where the invoice will be received.\n"
+"- Payer: Workplace associated to the recipient's tax identification number responsible for paying the invoice.\n"
+"- Buyer: Workplace associated to the recipient's tax identification number who issued the purchase order.\n"
+"- Collector: Workplace associated to  the issuer's tax identification number responsible for handling the collection.\n"
+"- Fiscal: Workplace associated to the recipient's tax identification number, where an Operational Point mailbox is shared by different client companies with different tax identification numbers and it is necessary to differentiate between where the message is received (shared letterbox) and the workplace where it must be stored (recipient company)."
+msgstr ""
+"Indica la función de un Punto Operacional (P.O.) definido como Centro/Departamento.\n"
+"Estas funciones son:\n"
+"- Receptor: Centro del NIF receptor destinatario de la factura..\n"
+"- Pagador: Centro del NIF receptor responsable de pagar la factura.\n"
+"- Comprador: Centro del NIF receptor que emitió el pedido.\n"
+"- Cobrador: Centro del NIF emisor responsable de gestionar el cobro.\n"
+"- Fiscal: Centro del NIF receptor de las facturas, cuando un P.O. buzón es compartido por varias empresas clientes con diferentes NIF y es necesario diferenciar el receptor del mensaje (buzón común) del lugar donde debe depositarse (empresa destinataria)."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__function
+msgid "Job Position"
+msgstr "Puesto de trabajo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__journal_item_count
+msgid "Journal Items"
+msgstr "Apuntes contables"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__property_account_income_id
+msgid ""
+"Keep this field empty to use the default value from the product category."
+msgstr "Mantenga este campo vacío para usar el valor por defecto de la categoría del producto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__property_account_expense_id
+msgid ""
+"Keep this field empty to use the default value from the product category. If"
+" anglo-saxon accounting with automated valuation method is configured, the "
+"expense account on the product category will be used."
+msgstr ""
+"Mantenga este campo vacío para usar el valor por defecto de la categoría de producto. Si se configura la contabilidad anglosajona con el método de valoración automatizado, se utilizará la cuenta de gastos en la categoría de producto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__lang
+msgid "Language"
+msgstr "Idioma"
+
+#. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__sync_date
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__sync_date
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sync_date
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__sync_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__sync_date
 msgid "Last Synchronization"
-msgstr "Última sincronización"
+msgstr "Ultima Sincronización"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__write_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__write_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__write_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__write_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__write_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__write_uid
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualización por"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__write_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__write_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__write_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__write_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__write_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__write_date
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización el"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__calendar_last_notif_ack
+msgid "Last notification marked as read from base Calendar"
+msgstr "Última notificación marcada como leída desde el calendario principal"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__location_id
+msgid "Location"
+msgstr "Ubicación"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__lock_trust_fields
+msgid "Lock Trust Fields"
+msgstr "Bloquear campos de confianza"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_logical_operational_point
+msgid "Logical Operational Point"
+msgstr "Punto Lógico Operacional"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__valuation
+msgid ""
+"Manual: The accounting entries to value the inventory are not posted automatically.\n"
+"        Automated: An accounting entry is automatically created to value the inventory when a product enters or leaves the company.\n"
+"        "
+msgstr ""
+"Manual: Los registros contables de valoración del inventario no se publican automáticamente.\n"
+"        Automatizado: Se crea automáticamente un registro contable para evaluar el inventario cuando un producto entra o sale de la empresa.\n"
+"        "
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__service_type
+msgid ""
+"Manually set quantities on order: Invoice based on the manually entered quantity, without creating an analytic account.\n"
+"Timesheets on contract: Invoice based on the tracked hours on the related timesheet.\n"
+"Create a task and track hours: Create a task on the sales order validation and track the work hours."
+msgstr ""
+"Establezca manualmente las cantidades en el pedido: la factura se basa en la cantidad entregada manualmente, sin crear una cuenta analítica.\n"
+"Partes de horas en el contrato: la factura se basa en las horas registradas en los partes de horas relacionados.\n"
+"Crear una tarea y rastrear las horas: crea una tarea en la validación del pedido de venta y realiza un seguimiento de las horas trabajadas."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__meeting_ids
+msgid "Meetings"
+msgstr "Reuniones"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_has_error
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_has_error
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de Envío de Mensaje"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_warn_msg
+msgid "Message for Invoice"
+msgstr "Mensaje para factura"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__purchase_warn_msg
+msgid "Message for Purchase Order"
+msgstr "Mensaje para el pedido de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__purchase_line_warn_msg
+msgid "Message for Purchase Order Line"
+msgstr "Mensaje para la línea de pedido de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__sale_warn_msg
+msgid "Message for Sales Order"
+msgstr "Mensaje para el pedido de venta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sale_line_warn_msg
+msgid "Message for Sales Order Line"
+msgstr "Mensaje para la línea de pedido de venta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__picking_warn_msg
+msgid "Message for Stock Picking"
+msgstr "Mensaje para albarán de picking"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__mobile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__money_transfer_service
+msgid "Money Transfer Service"
+msgstr "Servicio de transferencia de dinero"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__my_activity_date_deadline
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__my_activity_date_deadline
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha Límite Mi Actividad"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__name
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__name
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__bank_name
 msgid "Name"
 msgstr "Nombre"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__nbr_moves_in
+msgid "Nbr Moves In"
+msgstr "Número de movimientos de entrada"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__nbr_moves_out
+msgid "Nbr Moves Out"
+msgstr "Número de movimientos de salida"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_calendar_event_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_calendar_event_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Próxima Actividad Calendario Evento"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_date_deadline
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_date_deadline
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha Límite Siguiente Actividad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_summary
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_summary
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_type_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_type_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: connector_dimoni
+#: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_res_partner_bank
+msgid "No Dimoni partner bank accounts found"
+msgstr "No se encontraron cuentas bancarias de contactos Dimoni"
 
 #. module: connector_dimoni
 #: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_res_partner
@@ -337,7 +1715,7 @@ msgstr "No se encontraron contactos Dimoni"
 #. module: connector_dimoni
 #: model_terms:ir.actions.act_window,help:connector_dimoni.action_dimoni_product_template
 msgid "No Dimoni products found"
-msgstr "No se encontraron productos Dimoni"
+msgstr "No se ha encontrado producto en Dimoni"
 
 #. module: connector_dimoni
 #. odoo-python
@@ -364,9 +1742,163 @@ msgstr ""
 "indicados."
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__email_normalized
+msgid "Normalized Email"
+msgstr "Correo electrónico normalizado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__comment
+msgid "Notes"
+msgstr "Notas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_needaction_counter
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_needaction_counter
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de acciones"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__mandate_count
+msgid "Number of Mandates"
+msgstr "Número de mandatos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__reminder_date_before_receipt
+msgid "Number of days to send reminder email before the promised receipt date"
+msgstr ""
+"Número de días para enviar un correo electrónico de recordatorio antes de la fecha de recepción prometida"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_has_error_counter
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_has_error_counter
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de errores"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__nbr_moves_in
+msgid "Number of incoming stock moves in the past 12 months"
+msgstr "Número de movimientos de stock entrante en los últimos 12 meses"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_needaction_counter
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__message_needaction_counter
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__message_has_error_counter
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__message_has_error_counter
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de envío"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__nbr_moves_out
+msgid "Number of outgoing stock moves in the past 12 months"
+msgstr "Número de movimientos de stock saliente en los últimos 12 meses"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__pricelist_item_count
+msgid "Number of price rules"
+msgstr "Número de reglas de precios"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__purchase_method
+msgid ""
+"On ordered quantities: Control bills based on ordered quantities.\n"
+"On received quantities: Control bills based on received quantities."
+msgstr ""
+"Sobre cantidades pedidas: Control de facturas basado en cantidades pedidas.\n"
+"Sobre cantidades recibidas: Control de facturas basado en cantidades recibidas."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__on_time_rate
+msgid "On-Time Delivery Rate"
+msgstr "Tasa de entrega a tiempo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__opportunity_ids
+msgid "Opportunities"
+msgstr "Oportunidades"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__opportunity_count
+msgid "Opportunity Count"
+msgstr "Número de oportunidades"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__optional_product_ids
+msgid "Optional Products"
+msgstr "Productos opcionales"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__optional_product_ids
+msgid ""
+"Optional Products are suggested whenever the customer hits *Add to Cart* "
+"(cross-sell strategy, e.g. for computers: warranty, software, etc.)."
+msgstr ""
+"Los productos opcionales aparecen como sugerencias cada vez que el cliente pulsa en \"Añadir a la cesta\" (estrategia de venta cruzada; p. ej., en el caso de los ordenadores: garantía, software, etc.)."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__invoice_policy
+msgid ""
+"Ordered Quantity: Invoice quantities ordered by the customer.\n"
+"Delivered Quantity: Invoice quantities delivered to the customer."
+msgstr ""
+"Cantidad pedida: facturar cantidades pedidas por el cliente.\n"
+"Cantidad entregada: facturar cantidades entregadas al cliente."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__outgoing_qty
+msgid "Outgoing"
+msgstr "Saliente"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__on_time_rate
+msgid ""
+"Over the past x days; the number of products received on time divided by the"
+" number of ordered products.x is either the System Parameter "
+"purchase_stock.on_time_delivery_days or the default 365"
+msgstr ""
+"Durante los últimos x días; el número de productos recibidos a tiempo divido entre el número de products.x pedidos es el parámetro purchase_stock.on_time_delivery_days del sistema o 365."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__parent_name
+msgid "Parent name"
+msgstr "Nombre Padre"
+
+#. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__odoo_id
 msgid "Partner"
 msgstr "Contacto"
+
+#. module: connector_dimoni
+#: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_res_partner_bank
+msgid "Partner Bank Accounts"
+msgstr "Cuentas bancarias de contactos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__partner_company_registry_placeholder
+msgid "Partner Company Registry Placeholder"
+msgstr "Marcador de posición del registro de la compañía para contactos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__contract_ids
+msgid "Partner Contracts"
+msgstr "Contratos de contactos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__use_partner_credit_limit
+msgid "Partner Limit"
+msgstr "Límite para el contacto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__partner_vat_placeholder
+msgid "Partner Vat Placeholder"
+msgstr "Marcador de posición para el NIF del contacto"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_partner_import_wizard__partner_code
@@ -374,9 +1906,74 @@ msgid "Partner code"
 msgstr "Código de contacto"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__same_company_registry_partner_id
+msgid "Partner with same Company Registry"
+msgstr "Contacto con el mismo registro mercantil"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__same_vat_partner_id
+msgid "Partner with same Tax ID"
+msgstr "Contacto con el mismo NIF"
+
+#. module: connector_dimoni
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_res_partner
 msgid "Partners"
 msgstr "Contactos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__debit_limit
+msgid "Payable Limit"
+msgstr "Límite por pagar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__payment_token_count
+msgid "Payment Token Count"
+msgstr "Número de tókenes de pago"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__payment_token_ids
+msgid "Payment Tokens"
+msgstr "Tókenes de pago"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__peppol_endpoint
+msgid "Peppol Endpoint"
+msgstr "Punto de conexión Peppol"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__peppol_eas
+msgid "Peppol e-address (EAS)"
+msgstr "Dirección electrónica de Peppol (EAS)"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__peppol_verification_state
+msgid "Peppol status"
+msgstr "Estado de Peppol"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__perform_vies_validation
+msgid "Perform Vies Validation"
+msgstr "Realizar validación VIES"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__phone
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__phone_sanitized_blacklisted
+msgid "Phone Blacklisted"
+msgstr "Teléfono en la lista negra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__phone_mobile_search
+msgid "Phone/Mobile"
+msgstr "Teléfono/móvil"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_physical_gln
+msgid "Physical GLN"
+msgstr "GLN Físico"
 
 #. module: connector_dimoni
 #. odoo-python
@@ -385,17 +1982,85 @@ msgid "Please select the Dimoni database source first."
 msgstr "Seleccione primero el origen de base de datos de Dimoni."
 
 #. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_outbound_payment_method_line_id
+msgid ""
+"Preferred payment method when buying from this vendor. This will be set by "
+"default on all outgoing payments created for this vendor"
+msgstr ""
+"Método de pago preferido al comprar a este proveedor. Por defecto, estará seleccionado en todos los pagos salientes creados para este proveedor."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_inbound_payment_method_line_id
+msgid ""
+"Preferred payment method when selling to this customer. This will be set by "
+"default on all incoming payments created for this customer"
+msgstr ""
+"Método de pago preferido al vender a este cliente. Por defecto, estará seleccionado en todos los pagos entrantes creados para este cliente."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__property_account_creditor_price_difference
+msgid "Price Difference Account"
+msgstr "Cuenta de diferencia de precio"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__list_price
+msgid "Price at which the product is sold to customers."
+msgstr "Precio al que se vende el producto a los clientes."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_product_pricelist
+msgid "Pricelist"
+msgstr "Lista de precios"
+
+#. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__external_id
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__external_id
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__external_id
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__external_id
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__external_id
 msgid "Primary key in database Dimoni"
-msgstr "Clave primaria en la base de datos Dimoni"
+msgstr "Clave primaria en la base de datos de Dimoni"
+
+#. module: connector_dimoni
+#: model:ir.model,name:connector_dimoni.model_product_template
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_variant_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__attribute_line_ids
+msgid "Product Attributes"
+msgstr "Atributos del producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__categ_id
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__packaging_ids
+msgid "Product Packages"
+msgstr "Paquetes de productos"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__odoo_id
 msgid "Product Template"
-msgstr "Plantilla de producto"
+msgstr "Plantilla Producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_tooltip
+msgid "Product Tooltip"
+msgstr "Información sobre herramientas del producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__type
+msgid "Product Type"
+msgstr "Tipo de producto"
+
+#. module: connector_dimoni
+#: model:ir.model,name:connector_dimoni.model_product_product
+msgid "Product Variant"
+msgstr "Variante de producto"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_import_wizard__product_code
@@ -403,37 +2068,262 @@ msgid "Product code"
 msgstr "Código de producto"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__property_stock_production
+msgid "Production Location"
+msgstr "Ubicación de producción"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_variant_ids
 #: model:ir.ui.menu,name:connector_dimoni.menu_dimoni_product_template
 msgid "Products"
 msgstr "Productos"
 
 #. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_properties
+msgid "Properties"
+msgstr "Propiedades"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_inbound_payment_method_line_id
+msgid "Property Inbound Payment Method Line"
+msgstr "Línea de método de pago de entrada de la propiedad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_outbound_payment_method_line_id
+msgid "Property Outbound Payment Method Line"
+msgstr "Línea de método de pago de salida de la propiedad"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__purchase_ok
+msgid "Purchase"
+msgstr "Compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_purchase
+msgid "Purchase Description"
+msgstr "Descripción de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__purchase_line_ids
+msgid "Purchase Lines"
+msgstr "Líneas de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__purchase_order_count
+msgid "Purchase Order Count"
+msgstr "Número de pedidos de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__purchase_line_warn
+msgid "Purchase Order Line Warning"
+msgstr "Advertencia de línea de pedido de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__purchase_warn
+msgid "Purchase Order Warning"
+msgstr "Advertencia del pedido de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__supplier_taxes_id
+msgid "Purchase Taxes"
+msgstr "Impuestos de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_po_id
+msgid "Purchase Unit"
+msgstr "Unidad de compra"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__purchased_product_qty
+msgid "Purchased"
+msgstr "Comprado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__qty_available
+msgid "Quantity On Hand"
+msgstr "Cantidad real"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__rating_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__rating_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__rating_ids
+msgid "Ratings"
+msgstr "Calificaciones"
+
+#. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_form
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_bank_form
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_form
 msgid "Raw Data"
-msgstr "Datos brutos"
+msgstr "Datos sin procesar"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_binding__raw_payload
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_company__raw_payload
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__raw_payload
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__raw_payload
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__raw_payload
 msgid "Raw Payload"
-msgstr "Datos brutos"
+msgstr "Carga de datos sin procesar"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__raw_payload
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__raw_payload
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__raw_payload
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__raw_payload
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__raw_payload
 msgid "Raw Payload (JSON)"
-msgstr "Datos brutos (JSON)"
+msgstr "Datos Brutos (JSON)"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__expense_policy
+msgid "Re-Invoice Costs"
+msgstr "Volver a facturar los costes"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__visible_expense_policy
+msgid "Re-Invoice Policy visible"
+msgstr "Política de refacturación visible"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__receipt_reminder_email
+msgid "Receipt Reminder"
+msgstr "Recordatorio de recibo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__ref
+msgid "Reference"
+msgstr "Referencia"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_form
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_form
 msgid "Refresh"
-msgstr "Actualizar"
+msgstr "Refrescar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__parent_id
+msgid "Related Company"
+msgstr "Compañía relacionada"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__related_moves
+msgid "Related Moves"
+msgstr "Movimientos relacionados"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__employee_ids
+msgid "Related employees based on their private address"
+msgstr "Empleados relacionados en función de su dirección privada"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__reordering_max_qty
+msgid "Reordering Max Qty"
+msgstr "Cantidad máxima de reabastecimiento"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__reordering_min_qty
+msgid "Reordering Min Qty"
+msgstr "Cantidad mínima de reabastecimiento"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__nbr_reordering_rules
+msgid "Reordering Rules"
+msgstr "Reglas de reabastecimiento"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__responsible_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__activity_user_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__activity_user_id
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario responsable"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__l10n_es_edi_facturae_ac_role_type_ids
+msgid "Roles"
+msgstr "Roles"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__route_ids
+msgid "Routes"
+msgstr "Rutas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__has_available_route_ids
+msgid "Routes can be selected on this product"
+msgstr "Se pueden seleccionar rutas en este producto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__message_has_sms_error
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__message_has_sms_error
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS error de entrega"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__sale_order_count
+msgid "Sale Order Count"
+msgstr "Nº de pedidos de venta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sale_ok
+msgid "Sales"
+msgstr "Ventas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__description_sale
+msgid "Sales Description"
+msgstr "Descripción de ventas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__sale_order_ids
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sale_line_warn
+msgid "Sales Order Line"
+msgstr "Línea de pedido de venta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__list_price
+msgid "Sales Price"
+msgstr "Precio de venta"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__taxes_id
+msgid "Sales Taxes"
+msgstr "Impuesto de ventas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__sale_warn
+msgid "Sales Warnings"
+msgstr "Advertencias de ventas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__user_id
+msgid "Salesperson"
+msgstr "Comercial"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__sanitized_acc_number
+msgid "Sanitized Account Number"
+msgstr "Número de cuenta depurado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__phone_sanitized
+msgid "Sanitized Number"
+msgstr "Número depurado"
+
+#. module: connector_dimoni
+#: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_bank_search
+msgid "Search Dimoni Partner Bank Accounts"
+msgstr "Buscar cuentas bancarias de contactos Dimoni"
 
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_res_partner_search
@@ -443,36 +2333,648 @@ msgstr "Buscar contactos Dimoni"
 #. module: connector_dimoni
 #: model_terms:ir.ui.view,arch_db:connector_dimoni.view_dimoni_product_template_search
 msgid "Search Dimoni Products"
-msgstr "Buscar productos Dimoni"
+msgstr "Busca Productos Dimoni"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__customer_payment_mode_id
+msgid "Select the default payment mode for this customer."
+msgstr "Seleccione el modo de pago por defecto cuando esta empresa actúa como cliente."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__supplier_payment_mode_id
+msgid "Select the default payment mode for this supplier."
+msgstr "Seleccione el modo de pago por defecto cuando esta empresa actúa como proveedor."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__purchase_line_warn
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__sale_line_warn
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__invoice_warn
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__picking_warn
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__purchase_warn
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__sale_warn
+msgid ""
+"Selecting the \"Warning\" option will notify user with the message, "
+"Selecting \"Blocking Message\" will throw an exception with the message and "
+"block the flow. The Message has to be written in the next field."
+msgstr ""
+"Si selecciona la opción \"Advertencia\" se notificará a los usuarios con el mensaje, si selecciona \"Mensaje de bloqueo\" se lanzará una excepción con el mensaje y se bloqueará el flujo. El mensaje debe escribirse en el siguiente campo."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__self
+msgid "Self"
+msgstr "Si mismo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__allow_out_payment
+msgid "Send Money"
+msgstr "Enviar dinero"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__allow_out_payment
+msgid ""
+"Sending fake invoices with a fraudulent account number is a common phishing "
+"practice. To protect yourself, always verify new bank account numbers, "
+"preferably by calling the vendor, as phishing usually happens when their "
+"emails are compromised. Once verified, you can activate the ability to send "
+"money."
+msgstr ""
+"Frecuentemente se reciben correos que contienen facturas falsas con cuentas fraudulentas, a esta práctica se le llama phishing. Es importante verificar los nuevos números de cuenta y la mejor manera de hacerlo es llamar al proveedor, esto es importante porque si esto llega a pasar, quiere decir que el correo del proveedor está en peligro. Una vez que haya comprobado que la información es correcta puede activar la función de enviar dinero."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sequence
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__use_partner_credit_limit
+msgid "Set a value greater than 0.0 to activate a credit limit check"
+msgstr "Establezca un valor superior a 0,0 para activar una comprobación del crédito concedido"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__settlement_ids
+msgid "Settlement"
+msgstr "Liquidación"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__settlement
+msgid "Settlement period"
+msgstr "Período de liquidación"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__partner_share
+msgid "Share Partner"
+msgstr "Compartir empresa"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__code
 msgid "Short company code shown to the user in the interface."
-msgstr "Código corto de compañía mostrado al usuario en la interfaz."
+msgstr "Nombre corto de compañía mostrado al usuario en la interface."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__show_credit_limit
+msgid "Show Credit Limit"
+msgstr "Mostrar crédito concedido"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__show_forecasted_qty_status_button
+msgid "Show Forecasted Qty Status Button"
+msgstr "Mostrar botón de estado de cantidad prevista"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__show_on_hand_qty_status_button
+msgid "Show On Hand Qty Status Button"
+msgstr "Mostrar botón de estado de cantidad real"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__show_warning_vat_required
+msgid "Show Warning Vat Required"
+msgstr "Mostrar aviso VAT obligatorio"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__signup_type
+msgid "Signup Token Type"
+msgstr "Tipo de token de registro"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__sales_count
+msgid "Sold"
+msgstr "Vendido"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__bank_bic
+msgid "Sometimes called BIC or Swift."
+msgstr "Algunas veces llamado BIC o Swift"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__specific_property_product_pricelist
+msgid "Specific Property Product Pricelist"
+msgstr "Lista de precios para producto con propiedad específica"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__cost_method
+msgid ""
+"Standard Price: The products are valued at their standard cost defined on the product.\n"
+"        Average Cost (AVCO): The products are valued at weighted average cost.\n"
+"        First In First Out (FIFO): The products are valued supposing those that enter the company first will also leave it first.\n"
+"        "
+msgstr ""
+"Precio estándar: Los productos se valoran según su coste estándar definido en el producto.\n"
+"        Coste promedio (AVCO): Los productos se valoran según su coste promedio ponderado\n"
+"        Primeras entradas, primeras salidas (FIFO): Los productos se valoran dando por hecho que los primeros en entrar en la empresa son también los primeros en salir.\n"
+"        "
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__starred_message_ids
+msgid "Starred Message"
+msgstr "Mensaje destacado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__state_id
+msgid "State"
+msgstr "Estado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_state
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__activity_state
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Vencida: la fecha tope ya ha pasado\n"
+"Hoy: La fecha tope es hoy\n"
+"Planificada: futuras actividades."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__picking_warn
+msgid "Stock Picking"
+msgstr "Albarán"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_backend__store_raw_payload
 msgid "Store Raw Payload"
-msgstr "Almacenar datos brutos"
+msgstr "Almacenar Datos Brutos"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_backend__store_raw_payload
 msgid "Store Raw Payload (JSON) data for Dimoni records."
-msgstr "Almacenar datos brutos (JSON) de los registros Dimoni."
+msgstr "Almacenar Carga Bruta (JSON) datos para registros Dimoni."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__street
+msgid "Street"
+msgstr "Calle"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__street_name
+msgid "Street Name"
+msgstr "Nombre de la calle"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__street2
+msgid "Street2"
+msgstr "Calle2"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__service_to_purchase
+msgid "Subcontract Service"
+msgstr "Servicio de subcontratación"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_purchase_currency_id
+msgid "Supplier Currency"
+msgstr "Moneda del proveedor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__supplier_payment_mode_id
+msgid "Supplier Payment Mode"
+msgstr "Modo de pago de proveedor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__supplier_rank
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__partner_supplier_rank
+msgid "Supplier Rank"
+msgstr "Rango de proveedor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__product_tag_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__category_id
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__account_tag_ids
+msgid ""
+"Tags to be set on the base and tax journal items created for this product."
+msgstr ""
+"Etiquetas que deben establecerse en los apuntes contables base y de impuestos creados para este producto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__vat
+msgid "Tax ID"
+msgstr "NIF"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__vat_label
+msgid "Tax ID Label"
+msgstr "Etiqueta de NIF"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__tax_string
+msgid "Tax String"
+msgstr "Cadena de impuesto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__technical_description
+msgid "Technical Description"
+msgstr "Descripción Técnica"
 
 #. module: connector_dimoni
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_binding__binding_active
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_company__binding_active
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__binding_active
 #: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__binding_active
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__binding_active
 msgid ""
-"Technical active state of the Dimoni binding. This field is not named "
-"active to avoid shadowing the delegated Odoo record active field in "
-"_inherits binding models."
+"Technical active state of the Dimoni binding. This field is not named active"
+" to avoid shadowing the delegated Odoo record active field in _inherits "
+"binding models."
 msgstr ""
 "Estado activo técnico de la vinculación Dimoni. Este campo no se llama "
-"active para evitar ocultar el campo active del registro Odoo delegado en "
-"los modelos de vinculación con _inherits."
+"active para evitar ocultar el campo active del registro Odoo delegado en los"
+" modelos de vinculación con _inherits."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__has_iban_warning
+msgid ""
+"Technical field used to display a warning if the IBAN country is different "
+"than the holder country."
+msgstr ""
+"El campo técnico usado para mostrar una advertencia si el país IBAN es diferentes al IBAN necesario"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__has_money_transfer_warning
+msgid ""
+"Technical field used to display a warning if the account is a transfer "
+"service account."
+msgstr ""
+"El campo técnico usado para mostrar una advertencia si la cuenta es una cuenta de servicio de transferencia."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__country_code
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__country_code
+msgid ""
+"The ISO country code in two chars. \n"
+"You can use this field for quick search."
+msgstr ""
+"EL código ISO del país en dos caracteres.\n"
+"Puede utilizar este campo para una búsqueda rápida."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__vat
+msgid ""
+"The Tax Identification Number. Values here will be validated based on the "
+"country format. You can use '/' to indicate that the partner is not subject "
+"to tax."
+msgstr ""
+"El número de identificación fiscal. Los valores establecidos aquí se validarán según el formato del país. Puede utilizar \"/\" para indicar que el contacto no está sujeto a impuestos."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__journal_id
+msgid "The accounting journal corresponding to this bank account."
+msgstr "El diario contable que corresponde a esta cuenta bancaria."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_account_position_id
+msgid ""
+"The fiscal position determines the taxes/accounts used for this contact."
+msgstr "La posición fiscal determina los impuestos/cuentas utilizados para este contacto. "
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__user_id
+msgid "The internal user in charge of this contact."
+msgstr "El usuario interno a cargo de este contacto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__company_registry
+msgid ""
+"The registry number of the company. Use it if it is different from the Tax "
+"ID. It must be unique across all partners of a same country"
+msgstr ""
+"El número de registro de la empresa. Úselo si es distinto del NIF. Debe ser único entre todos los contactos del mismo país"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_stock_customer
+msgid ""
+"The stock location used as destination when sending goods to this contact."
+msgstr "La ubicación de stock utilizada como destino al enviar mercancías a este contacto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_stock_supplier
+msgid ""
+"The stock location used as source when receiving goods from this contact."
+msgstr "La ubicación de stock utilizada como origen al recibir productos de este contacto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__property_account_creditor_price_difference
+msgid ""
+"This account is used in automated inventory valuation to record the price "
+"difference between a purchase order and its related vendor bill when "
+"validating this vendor bill."
+msgstr ""
+"Esta cuenta se utiliza en la valoración de inventario automatizada para registrar la diferencia de precio entre un pedido de compra y su factura de proveedor relacionada al validar esta factura de proveedor."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_account_payable_id
+msgid ""
+"This account will be used instead of the default one as the payable account "
+"for the current partner"
+msgstr ""
+"Se utilizará esta cuenta en lugar de la cuenta por defecto como la cuenta a pagar del contacto actual"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_account_receivable_id
+msgid ""
+"This account will be used instead of the default one as the receivable "
+"account for the current partner"
+msgstr ""
+"Se utilizará esta cuenta en lugar de la cuenta por defecto como la cuenta por cobrar del contacto actual"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_purchase_currency_id
+msgid ""
+"This currency will be used, instead of the default one, for purchases from "
+"the current partner"
+msgstr ""
+"Se utilizará esta moneda en lugar de la predeterminada para las compras del contacto actual"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__email_normalized
+msgid ""
+"This field is used to search on email address as the primary email field can"
+" contain more than strictly an email address."
+msgstr ""
+"Este campo se utiliza para buscar en la dirección de correo electrónico, ya que el campo de correo electrónico principal puede contener más de una dirección de correo electrónico."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__commission_id
+msgid ""
+"This is the default commission used in the sales where this agent is "
+"assigned. It can be changed on each operation if needed."
+msgstr ""
+"Esta es la comisión por defecto utilizada en las ventas donde este agente está asignado. Se puede cambiar en cada operación si es necesario."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_supplier_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for purchase "
+"orders and vendor bills"
+msgstr ""
+"Se utilizará este plazo de pago en lugar del predeterminado para los pedidos de compra y las facturas de proveedor."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_payment_term_id
+msgid ""
+"This payment term will be used instead of the default one for sales orders "
+"and customer invoices"
+msgstr ""
+"Se utilizará este plazo de pago en lugar del plazo por defecto para pedidos de venta y facturas de clientes"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__property_product_pricelist
+msgid ""
+"This pricelist will be used, instead of the default one, for sales to the "
+"current partner"
+msgstr ""
+"Se utilizará esta lista de precios con este contacto en lugar de la lista de precios por defecto"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__property_stock_production
+msgid ""
+"This stock location will be used, instead of the default one, as the source "
+"location for stock moves generated by manufacturing orders."
+msgstr ""
+"Se usará esta ubicación de stock, en lugar de la de por defecto, como la ubicación origen para los movimientos de stock generados por las órdenes de fabricación."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__property_stock_inventory
+msgid ""
+"This stock location will be used, instead of the default one, as the source "
+"location for stock moves generated when you do an inventory."
+msgstr ""
+"Se usará esta ubicación de stock, en lugar de la predeterminada, como la ubicación origen para los movimientos de stock generados cuando se realizan inventarios."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__responsible_id
+msgid ""
+"This user will be responsible of the next activities related to logistic "
+"operations for this product."
+msgstr ""
+"Este usuario será responsable de las próximas actividades relacionadas con las operaciones logísticas de este producto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__tz
+msgid "Timezone"
+msgstr "Zona horaria"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__tz_offset
+msgid "Timezone offset"
+msgstr "Compensación de zona horaria"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__title
+msgid "Title"
+msgstr "Título"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__total_invoiced
+msgid "Total Invoiced"
+msgstr "Total facturado"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__debit
+msgid "Total Payable"
+msgstr "Total por pagar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__credit
+msgid "Total Receivable"
+msgstr "Total por cobrar"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__credit
+msgid "Total amount this customer owes you."
+msgstr "Importe total que el cliente le debe."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__debit
+msgid "Total amount you have to pay to this vendor."
+msgstr "Importe total a pagar a este proveedor."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__is_storable
+msgid "Track Inventory"
+msgstr "Rastrear inventario"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__service_type
+msgid "Track Service"
+msgstr "Seguimiento del servicio"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__tracking
+msgid "Tracking"
+msgstr "Seguimiento"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__comercial
+msgid "Trade name"
+msgstr "Nombre comercial"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__agent_type
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__acc_type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__activity_exception_decoration
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__activity_exception_decoration
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo excepción de actividad en el registro."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__peppol_endpoint
+msgid ""
+"Unique identifier used by the BIS Billing 3.0 and its derivatives, also "
+"known as 'Endpoint ID'."
+msgstr ""
+"El identificador único que utiliza la facturación BIS 3.0 y sus derivadas, también conocido como \"ID del punto de conexión\"."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_id
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_name
+msgid "Unit of Measure Name"
+msgstr "Nombre de unidad de medida"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__uom_category_id
+msgid "UoM Category"
+msgstr "Categoría de UdM"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__barcode
+msgid "Use a barcode to identify this contact."
+msgstr "Use un código de barras para identificar este contacto."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__user_has_group_validate_bank_account
+msgid "User Has Group Validate Bank Account"
+msgstr "El usuario tiene un grupo para validar la cuenta bancaria "
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__user_ids
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__valid_product_template_attribute_line_ids
+msgid "Valid Product Attribute Lines"
+msgstr "Líneas del atributo de productos válidos"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__expense_policy
+msgid ""
+"Validated expenses, vendor bills, or stock pickings (set up to track costs) "
+"can be invoiced to the customer at either cost or sales price."
+msgstr ""
+"Puede volver a facturar gastos validados, facturas de proveedores o pickings de stock (configuración de seguimiento de los costes) a un cliente a su coste o a precio de venta."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__lot_valuated
+msgid "Valuation by Lot/Serial number"
+msgstr "Valoración por número de serie o lote"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__standard_price
+msgid ""
+"Value of the product (automatically computed in AVCO).\n"
+"        Used to value the product when the purchase cost is not known (e.g. inventory adjustment).\n"
+"        Used to compute margins on sale orders."
+msgstr ""
+"El valor del producto (calculado automáticamente con AVCO).\n"
+"        Se utiliza para valorar el producto cuando se desconoce el coste de compra (por ejemplo, en un ajuste de inventario).\n"
+"        Se utiliza para calcular los márgenes de los pedidos de venta."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__variant_seller_ids
+msgid "Variant Seller"
+msgstr "Variante del vendedor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_stock_supplier
+msgid "Vendor Location"
+msgstr "Ubicación de proveedor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__property_supplier_payment_term_id
+msgid "Vendor Payment Terms"
+msgstr "Condiciones de pago del proveedor"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__seller_ids
+msgid "Vendors"
+msgstr "Proveedores"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__vies_vat_to_check
+msgid "Vies Vat To Check"
+msgstr "Comprobar un número de IVA en VIES"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__volume
+msgid "Volume"
+msgstr "Volumen"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__volume_uom_name
+msgid "Volume unit of measure label"
+msgstr "Etiqueta de unidad de medida de volumen"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__warehouse_id
+msgid "Warehouse"
+msgstr "Almacén"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__website
+msgid "Website Link"
+msgstr "Enlace a sitio web"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__website_message_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__website_message_ids
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner_bank__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_product_template__website_message_ids
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__website_message_ids
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner_bank__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicaciones del sitio web"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__weight
+msgid "Weight"
+msgstr "Peso"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_product_template__weight_uom_name
+msgid "Weight unit of measure label"
+msgstr "Etiqueta de unidad de medida de peso"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__tz
+msgid ""
+"When printing documents and exporting/importing data, time values are computed according to this timezone.\n"
+"If the timezone is not set, UTC (Coordinated Universal Time) is used.\n"
+"Anywhere else, time values are computed according to the time offset of your web client."
+msgstr ""
+"Al imprimir documentos y exportar e importar datos, los valores de fechas y horas se calculan con base en esta zona horaria.\n"
+"Si no se ha fijado una zona horaria, se usa UTC (Tiempo Universal Coordinado).\n"
+"En cualquier otro lado, los valores se calculan de acuerdo al desfase de su navegador."
 
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_partner_import_wizard
@@ -482,4 +2984,27 @@ msgstr "Asistente para importar un contacto desde Dimoni"
 #. module: connector_dimoni
 #: model:ir.model,name:connector_dimoni.model_dimoni_product_import_wizard
 msgid "Wizard to import one product from Dimoni"
-msgstr "Asistente para importar un producto desde Dimoni"
+msgstr "Asistente para importar un producto de Dimoni"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__zip_id
+msgid "ZIP Location"
+msgstr "Ubicación"
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__zip
+msgid "Zip"
+msgstr "C.P."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,help:connector_dimoni.field_dimoni_res_partner__days_sales_outstanding
+msgid ""
+"[(Total Receivable/Total Revenue) * number of days since the first invoice] "
+"for this customer"
+msgstr ""
+"[(Total por cobrar/Ingreso total)* número de días desde la primer factura] para este cliente."
+
+#. module: connector_dimoni
+#: model:ir.model.fields,field_description:connector_dimoni.field_dimoni_res_partner__invoice_edi_format
+msgid "eInvoice format"
+msgstr "Formato de la factura electrónica"

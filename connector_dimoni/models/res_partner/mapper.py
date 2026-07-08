@@ -27,9 +27,7 @@ class DimoniResPartnerImportMapper(Component):
         country_code = DIMONI_COUNTRY_CODES.get(dimoni_code)
         if not country_code:
             return self.env["res.country"]
-        return self.env["res.country"].search(
-            [("code", "=", country_code)], limit=1
-        )
+        return self.env["res.country"].search([("code", "=", country_code)], limit=1)
 
     @mapping
     def default_values(self, record):

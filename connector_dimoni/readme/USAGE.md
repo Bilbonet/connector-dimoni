@@ -21,7 +21,16 @@ is not linked yet and then open the linked `res.partner`. If no binding exists
 yet, the importer first searches for an existing partner with the same `ref` in
 the backend company scope before creating a new partner.
 
+Partner imports also import the partner bank accounts available in Dimoni for
+the selected backend company. Imported bank accounts create
+`dimoni.res.partner.bank` bindings and are visible from *Connector > Dimoni
+Connector > Partner Bank Accounts*. If Dimoni provides a SEPA mandate reference
+and signature date, the import creates or updates the corresponding
+`account.banking.mandate`.
+
 The product and partner list and kanban views also expose a *Dimoni Import*
 button that opens the corresponding import wizard. Imported product and partner
 forms include a Dimoni smart button to open their bindings and a refresh action
 to fetch the latest data from Dimoni.
+
+Binding lists show the most recently synchronized records first.

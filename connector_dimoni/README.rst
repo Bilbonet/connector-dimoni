@@ -28,11 +28,16 @@ The backend stores the Dimoni company scope (``GRP_ID``) and uses
 connector bindings to keep the link between Dimoni ``ROW_ID`` values and
 Odoo records.
 
-The implemented imports cover Dimoni companies, product templates and
-partners. Products can be imported by Dimoni product code into
-``product.template``, while partners can be imported by Dimoni partner
-code into ``res.partner``. Imported records can be refreshed from their
-Dimoni binding.
+The implemented imports cover Dimoni companies, product templates,
+partners, partner bank accounts and direct debit mandates. Products can
+be imported by Dimoni product code into ``product.template``, while
+partners can be imported by Dimoni partner code into ``res.partner``.
+
+When a partner is imported or refreshed, the connector also imports its
+bank accounts into ``res.partner.bank`` and creates or updates the
+related banking mandates when Dimoni provides mandate reference and
+signature date data. Imported records can be refreshed from their Dimoni
+binding.
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -50,8 +55,13 @@ Use Cases / Context
 Dimoni stores data for multiple companies in the same database. This
 connector keeps each Odoo backend scoped to one imported Dimoni company
 through ``GRP_ID`` and preserves the Dimoni ``ROW_ID`` on binding
-records so imports can be rerun without creating duplicate Odoo products
-or partners.
+records so imports can be rerun without creating duplicate Odoo
+products, partners or partner bank accounts.
+
+Partner bank accounts are imported from the company-specific Dimoni
+relation table and enriched with global bank account details before
+creating the Odoo bank account and, when available, the related direct
+debit mandate.
 
 Installation
 ============
@@ -73,11 +83,17 @@ and set:
 
 Before activating a backend, import the Dimoni companies from the
 backend form and select one of them. Active backends require a selected
-Dimoni company because all product and partner queries are scoped by its
-``GRP_ID``.
+Dimoni company because all product, partner and partner bank relation
+queries are scoped by its ``GRP_ID``.
 
 Enable *Default* on the active backend that should be preselected by the
 product and partner import wizards for the current Odoo company.
+
+Partner bank account imports require Dimoni bank account relation data
+in ``FACDC`` for the selected ``GRP_ID`` and matching bank account
+details in ``FCTAC``. The connector builds the IBAN from the Dimoni bank
+account segments and relies on ``base_bank_from_iban`` to resolve bank
+data from the IBAN when possible.
 
 Usage
 =====
@@ -107,10 +123,19 @@ If no binding exists yet, the importer first searches for an existing
 partner with the same ``ref`` in the backend company scope before
 creating a new partner.
 
+Partner imports also import the partner bank accounts available in
+Dimoni for the selected backend company. Imported bank accounts create
+``dimoni.res.partner.bank`` bindings and are visible from *Connector >
+Dimoni Connector > Partner Bank Accounts*. If Dimoni provides a SEPA
+mandate reference and signature date, the import creates or updates the
+corresponding ``account.banking.mandate``.
+
 The product and partner list and kanban views also expose a *Dimoni
 Import* button that opens the corresponding import wizard. Imported
 product and partner forms include a Dimoni smart button to open their
 bindings and a refresh action to fetch the latest data from Dimoni.
+
+Binding lists show the most recently synchronized records first.
 
 Known issues / Roadmap
 ======================
@@ -121,8 +146,8 @@ Known issues / Roadmap
   Dimoni. The module currently only provides generic exporter
   scaffolding.
 - Extend the mapped fields when more Dimoni columns are required. The
-  current mappings cover the fields used by the product, partner and
-  company importers.
+  current mappings cover the fields used by the company, product,
+  partner, partner bank account and mandate importers.
 - Add automated tests for backend scoping, binding reuse, field mapping
   and refresh behavior.
 

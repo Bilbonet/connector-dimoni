@@ -9,6 +9,7 @@ class DimoniBinding(models.AbstractModel):
     _inherit = "external.binding"
     _description = "Dimoni Binding (abstract)"
     _rec_name = "external_id"
+    _order = "sync_date desc, id desc"
 
     # Common fields for all Dimoni binding models
     # 'odoo_id': odoo-side id must be declared in concrete model

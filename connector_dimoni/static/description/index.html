@@ -375,11 +375,15 @@ data from Dimoni through an MSSQL <tt class="docutils literal">base.external.dbs
 The backend stores the Dimoni company scope (<tt class="docutils literal">GRP_ID</tt>) and uses
 connector bindings to keep the link between Dimoni <tt class="docutils literal">ROW_ID</tt> values and
 Odoo records.</p>
-<p>The implemented imports cover Dimoni companies, product templates and
-partners. Products can be imported by Dimoni product code into
-<tt class="docutils literal">product.template</tt>, while partners can be imported by Dimoni partner
-code into <tt class="docutils literal">res.partner</tt>. Imported records can be refreshed from their
-Dimoni binding.</p>
+<p>The implemented imports cover Dimoni companies, product templates,
+partners, partner bank accounts and direct debit mandates. Products can
+be imported by Dimoni product code into <tt class="docutils literal">product.template</tt>, while
+partners can be imported by Dimoni partner code into <tt class="docutils literal">res.partner</tt>.</p>
+<p>When a partner is imported or refreshed, the connector also imports its
+bank accounts into <tt class="docutils literal">res.partner.bank</tt> and creates or updates the
+related banking mandates when Dimoni provides mandate reference and
+signature date data. Imported records can be refreshed from their Dimoni
+binding.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
 <p class="last">This is an alpha version, the data model and design can change at any time without warning.
@@ -410,8 +414,12 @@ Only for development or testing purpose, do not use in production.
 <p>Dimoni stores data for multiple companies in the same database. This
 connector keeps each Odoo backend scoped to one imported Dimoni company
 through <tt class="docutils literal">GRP_ID</tt> and preserves the Dimoni <tt class="docutils literal">ROW_ID</tt> on binding
-records so imports can be rerun without creating duplicate Odoo products
-or partners.</p>
+records so imports can be rerun without creating duplicate Odoo
+products, partners or partner bank accounts.</p>
+<p>Partner bank accounts are imported from the company-specific Dimoni
+relation table and enriched with global bank account details before
+creating the Odoo bank account and, when available, the related direct
+debit mandate.</p>
 </div>
 <div class="section" id="installation">
 <h1><a class="toc-backref" href="#toc-entry-2">Installation</a></h1>
@@ -430,10 +438,15 @@ and set:</p>
 </ul>
 <p>Before activating a backend, import the Dimoni companies from the
 backend form and select one of them. Active backends require a selected
-Dimoni company because all product and partner queries are scoped by its
-<tt class="docutils literal">GRP_ID</tt>.</p>
+Dimoni company because all product, partner and partner bank relation
+queries are scoped by its <tt class="docutils literal">GRP_ID</tt>.</p>
 <p>Enable <em>Default</em> on the active backend that should be preselected by the
 product and partner import wizards for the current Odoo company.</p>
+<p>Partner bank account imports require Dimoni bank account relation data
+in <tt class="docutils literal">FACDC</tt> for the selected <tt class="docutils literal">GRP_ID</tt> and matching bank account
+details in <tt class="docutils literal">FCTAC</tt>. The connector builds the IBAN from the Dimoni bank
+account segments and relies on <tt class="docutils literal">base_bank_from_iban</tt> to resolve bank
+data from the IBAN when possible.</p>
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#toc-entry-4">Usage</a></h1>
@@ -460,10 +473,17 @@ in the backend company scope before creating a new product template.</p>
 If no binding exists yet, the importer first searches for an existing
 partner with the same <tt class="docutils literal">ref</tt> in the backend company scope before
 creating a new partner.</p>
+<p>Partner imports also import the partner bank accounts available in
+Dimoni for the selected backend company. Imported bank accounts create
+<tt class="docutils literal">dimoni.res.partner.bank</tt> bindings and are visible from <em>Connector &gt;
+Dimoni Connector &gt; Partner Bank Accounts</em>. If Dimoni provides a SEPA
+mandate reference and signature date, the import creates or updates the
+corresponding <tt class="docutils literal">account.banking.mandate</tt>.</p>
 <p>The product and partner list and kanban views also expose a <em>Dimoni
 Import</em> button that opens the corresponding import wizard. Imported
 product and partner forms include a Dimoni smart button to open their
 bindings and a refresh action to fetch the latest data from Dimoni.</p>
+<p>Binding lists show the most recently synchronized records first.</p>
 </div>
 <div class="section" id="known-issues-roadmap">
 <h1><a class="toc-backref" href="#toc-entry-5">Known issues / Roadmap</a></h1>
@@ -474,8 +494,8 @@ than one product or partner code at a time.</li>
 Dimoni. The module currently only provides generic exporter
 scaffolding.</li>
 <li>Extend the mapped fields when more Dimoni columns are required. The
-current mappings cover the fields used by the product, partner and
-company importers.</li>
+current mappings cover the fields used by the company, product,
+partner, partner bank account and mandate importers.</li>
 <li>Add automated tests for backend scoping, binding reuse, field mapping
 and refresh behavior.</li>
 </ul>

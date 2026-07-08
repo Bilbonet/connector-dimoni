@@ -105,9 +105,7 @@ class DimoniResPartnerBankImporter(Component):
             return self.env["account.banking.mandate"].browse()
 
         company = self.backend_record.company_id
-        mandate_model = (
-            self.env["account.banking.mandate"].sudo().with_company(company)
-        )
+        mandate_model = self.env["account.banking.mandate"].sudo().with_company(company)
         mandate = mandate_model.search(
             [
                 ("unique_mandate_reference", "=", mandate_ref),
@@ -184,8 +182,7 @@ class DimoniResPartnerBankImporter(Component):
 
         vals = {"binding_active": False, "sync_date": fields.Datetime.now()}
         message = (
-            "Partner bank account no longer exists in Dimoni "
-            f"(ROW_ID: {row_id})."
+            "Partner bank account no longer exists in Dimoni " f"(ROW_ID: {row_id})."
         )
         vals["raw_payload"] = (
             f"{binding.raw_payload}\n\n{message}" if binding.raw_payload else message
